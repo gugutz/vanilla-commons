@@ -30,6 +30,7 @@ export default {
       include: 'node_modules/**'
     })
   ],
+  context: 'window',
   targets: [
     {
       format: 'cjs',
