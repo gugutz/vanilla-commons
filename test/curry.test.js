@@ -32,7 +32,7 @@ describe('curry main functionality', () => {
   })
 })
 
-describe('curry argument validation errors', () => {
+describe('curry arguments validation errors', () => {
   it('should throw a TypeError when unexpected argument types', () => {
     expect(() => {
       curry({})
@@ -46,12 +46,6 @@ describe('curry argument validation errors', () => {
     expect(() => {
       curry('hey')
     }).toThrow(TypeError)
-
-    it('should throw a TypeError when the first argument is not defined', () => {
-      expect(() => {
-        curry()
-      }).toThrow(TypeError)
-    })
   })
 
   it('should throw a TypeError when the first argument is not defined', () => {

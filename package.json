@@ -9,15 +9,15 @@
     "dist"
   ],
   "scripts": {
-    "test": "jest --verbose",
-    "test:watch": "npm test -- --watch",
-    "coverage": "npm test -- --coverage",
-    "coveralls": "npm coverage && cat coverage/lcov.info | coveralls",
-    "build": "rollup -c rollup.config.js",
     "prettify": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write rollup.config.js --write \"test/**/*.js\"",
     "lint": "npm run prettify && xo --fix",
-    "precommit": "npm run lint && npm test && npm run build",
-    "prepublish": "npm run build"
+    "test": "npm run lint && jest --verbose",
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage",
+    "coveralls": "npm coverage && cat coverage/lcov.info | coveralls",
+    "build": "rollup -c rollup.config.js",
+    "precommit": "npm test && npm run build",
+    "prepublish": "npm run precommit"
   },
   "repository": {
     "type": "git",
@@ -70,7 +70,8 @@
       "jest"
     ],
     "rules": {
-      "no-mixed-operators": "warn"
+      "no-mixed-operators": "warn",
+      "import/prefer-default-export": 0
     },
     "space": true,
     "semicolon": false
