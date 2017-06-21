@@ -1,0 +1,35 @@
+{
+  "name": "vanilla-commons",
+  "version": "0.0.1",
+  "description": "Lightweight common vanilla utilities for the modern web development",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thiamsantos/vanilla-commons.git"
+  },
+  "keywords": [
+    "util",
+    "functional",
+    "immutable",
+    "pure",
+    "modules",
+    "lightweight",
+    "library",
+    "fast",
+    "small",
+    "common",
+    "utilities",
+    "vanilla",
+    "modern",
+    "curry"
+  ],
+  "author": "Thiago Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thiamsantos/vanilla-commons/issues"
+  },
+  "homepage": "https://github.com/thiamsantos/vanilla-commons#readme"
+}
