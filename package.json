@@ -2,9 +2,22 @@
   "name": "vanilla-commons",
   "version": "0.0.2",
   "description": "Lightweight common vanilla utilities for the modern web development",
-  "main": "index.js",
+  "main": "dist/vanilla-commons.js",
+  "module": "dist/vanilla-commons.es.js",
+  "jsnext:main": "dist/vanilla-commons.es.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --verbose",
+    "test:watch": "npm test -- --watch",
+    "coverage": "npm test -- --coverage",
+    "coveralls": "npm coverage && cat coverage/lcov.info | coveralls",
+    "build": "rollup -c rollup.config.js",
+    "prettify": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write rollup.config.js --write \"test/**/*.js\"",
+    "lint": "npm run prettify && xo --fix",
+    "precommit": "npm run lint && npm test && npm run build",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -31,5 +44,31 @@
   "bugs": {
     "url": "https://github.com/thiamsantos/vanilla-commons/issues"
   },
-  "homepage": "https://github.com/thiamsantos/vanilla-commons#readme"
+  "babel": {
+    "presets": [
+      "env",
+      "stage-0"
+    ]
+  },
+  "homepage": "https://github.com/thiamsantos/vanilla-commons#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-stage-0": "^6.24.1",
+    "coveralls": "^2.13.1",
+    "husky": "^0.13.4",
+    "jest": "^20.0.4",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-multi-entry": "^2.0.1",
+    "rollup-plugin-node-resolve": "^3.0.0"
+  },
+  "xo": {
+    "envs": [
+      "browser",
+      "jest"
+    ],
+    "space": true,
+    "semicolon": false
+  }
 }
