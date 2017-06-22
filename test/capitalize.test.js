@@ -24,7 +24,7 @@ describe('capitalize arguments validation errors', () => {
       capitalize(42)
     }).toThrow(TypeError)
     expect(() => {
-      capitalize(function () {})
+      capitalize(() => {})
     }).toThrow(TypeError)
   })
 

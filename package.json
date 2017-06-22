@@ -14,7 +14,7 @@
     "test": "npm run lint && jest --verbose",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
-    "coveralls": "npm coverage && cat coverage/lcov.info | coveralls",
+    "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
     "build": "rollup -c rollup.config.js",
     "precommit": "npm test && npm run build",
     "prepublish": "npm run precommit"

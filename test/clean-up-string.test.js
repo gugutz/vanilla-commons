@@ -21,7 +21,7 @@ describe('cleanUpString arguments validation errors', () => {
       cleanUpString(42)
     }).toThrow(TypeError)
     expect(() => {
-      cleanUpString(function () {})
+      cleanUpString(() => {})
     }).toThrow(TypeError)
   })
 
