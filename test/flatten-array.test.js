@@ -2,10 +2,11 @@ import {flattenArray} from '../lib/array'
 
 describe('flattenArray main functionality', () => {
   it('should flatten an array', () => {
-    expect(flattenArray([1, 2, 3, 4])).toEqual([1, 2, 3, 4])
-    expect(flattenArray([1, [2, 3, 4]])).toEqual([1, 2, 3, 4])
-    expect(flattenArray([[1], [2, [3, 4]]])).toEqual([1, 2, 3, 4])
-    expect(flattenArray([1, [2, 3], 4])).toEqual([1, 2, 3, 4])
+    const expected = [1, 2, 3, 4]
+    expect(flattenArray([1, 2, 3, 4])).toEqual(expected)
+    expect(flattenArray([1, [2, 3, 4]])).toEqual(expected)
+    expect(flattenArray([[1], [2, [3, 4]]])).toEqual(expected)
+    expect(flattenArray([1, [2, 3], 4])).toEqual(expected)
   })
 })
 
@@ -31,31 +32,25 @@ describe('flattenArray arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw errors with a friendly messages', () => {
-    expect(() => {
+  it('should throw errors with a friendly messages when the first argument has an unexpected type', () => {
+    const expected = expect(() => {
       flattenArray({})
-    }).toThrow(/1st/)
-    expect(() => {
-      flattenArray({})
-    }).toThrow(/`flattenArray`/)
-    expect(() => {
-      flattenArray({})
-    }).toThrow(/unexpected type/)
-    expect(() => {
-      flattenArray({})
-    }).toThrow(/array is expected/)
+    })
 
-    expect(() => {
+    expected.toThrow(/1st/)
+    expected.toThrow(/`flattenArray`/)
+    expected.toThrow(/unexpected type/)
+    expected.toThrow(/array is expected/)
+  })
+
+  it('should throw errors with a friendly messages when the first argument is undefined', () => {
+    const expected = expect(() => {
       flattenArray()
-    }).toThrow(/1st/)
-    expect(() => {
-      flattenArray()
-    }).toThrow(/`flattenArray`/)
-    expect(() => {
-      flattenArray()
-    }).toThrow(/is not defined/)
-    expect(() => {
-      flattenArray()
-    }).toThrow(/array is expected/)
+    })
+
+    expected.toThrow(/1st/)
+    expected.toThrow(/`flattenArray`/)
+    expected.toThrow(/is not defined/)
+    expected.toThrow(/array is expected/)
   })
 })

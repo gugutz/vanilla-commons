@@ -9,9 +9,10 @@
     "dist"
   ],
   "scripts": {
-    "prettify": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write rollup.config.js --write \"test/**/*.js\"",
-    "lint": "npm run prettify && xo --fix",
-    "test": "npm run lint && jest --verbose",
+    "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write rollup.config.js --write \"test/**/*.js\"",
+    "lint": "xo --fix",
+    "pretest": "npm run lint",
+    "test": "jest --verbose",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",

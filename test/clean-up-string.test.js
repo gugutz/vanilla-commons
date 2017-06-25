@@ -31,31 +31,25 @@ describe('cleanUpString arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw errors with a friendly messages', () => {
-    expect(() => {
+  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+    const expected = expect(() => {
       cleanUpString({})
-    }).toThrow(/1st/)
-    expect(() => {
-      cleanUpString({})
-    }).toThrow(/`cleanUpString`/)
-    expect(() => {
-      cleanUpString({})
-    }).toThrow(/unexpected type/)
-    expect(() => {
-      cleanUpString({})
-    }).toThrow(/string is expected/)
+    })
 
-    expect(() => {
+    expected.toThrow(/1st/)
+    expected.toThrow(/`cleanUpString`/)
+    expected.toThrow(/unexpected type/)
+    expected.toThrow(/string is expected/)
+  })
+
+  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+    const expected = expect(() => {
       cleanUpString()
-    }).toThrow(/1st/)
-    expect(() => {
-      cleanUpString()
-    }).toThrow(/`cleanUpString`/)
-    expect(() => {
-      cleanUpString()
-    }).toThrow(/is not defined/)
-    expect(() => {
-      cleanUpString()
-    }).toThrow(/string is expected/)
+    })
+
+    expected.toThrow(/1st/)
+    expected.toThrow(/`cleanUpString`/)
+    expected.toThrow(/is not defined/)
+    expected.toThrow(/string is expected/)
   })
 })

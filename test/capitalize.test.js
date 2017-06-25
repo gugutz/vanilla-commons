@@ -34,31 +34,24 @@ describe('capitalize arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw errors with a friendly messages', () => {
-    expect(() => {
+  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+    const expected = expect(() => {
       capitalize({})
-    }).toThrow(/1st/)
-    expect(() => {
-      capitalize({})
-    }).toThrow(/`capitalize`/)
-    expect(() => {
-      capitalize({})
-    }).toThrow(/unexpected type/)
-    expect(() => {
-      capitalize({})
-    }).toThrow(/string is expected/)
+    })
 
-    expect(() => {
+    expected.toThrow(/1st/)
+    expected.toThrow(/`capitalize`/)
+    expected.toThrow(/unexpected type/)
+    expected.toThrow(/string is expected/)
+  })
+
+  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+    const expected = expect(() => {
       capitalize()
-    }).toThrow(/1st/)
-    expect(() => {
-      capitalize()
-    }).toThrow(/`capitalize`/)
-    expect(() => {
-      capitalize()
-    }).toThrow(/is not defined/)
-    expect(() => {
-      capitalize()
-    }).toThrow(/string is expected/)
+    })
+    expected.toThrow(/1st/)
+    expected.toThrow(/`capitalize`/)
+    expected.toThrow(/is not defined/)
+    expected.toThrow(/string is expected/)
   })
 })
