@@ -81,6 +81,7 @@
   },
   "dependencies": {
     "kind-of": "^5.0.0",
-    "month-days": "^2.1.0"
+    "month-days": "^2.1.0",
+    "tinydate": "^1.0.0"
   }
 }
