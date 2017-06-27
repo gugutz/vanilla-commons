@@ -5,21 +5,21 @@ describe('addYears main functionality', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addYears(2, date)
     const expected = new Date('December 17, 1997 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should remove years of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addYears(-2, date)
     const expected = new Date('December 17, 1993 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addYears(2)(date)
     const expected = new Date('December 17, 1997 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should handle 29 February in leap years', () => {

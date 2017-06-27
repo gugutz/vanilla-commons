@@ -5,21 +5,21 @@ describe('addHours main functionality', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addHours(2, date)
     const expected = new Date('December 17, 1995 05:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should remove hours of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addHours(-2, date)
     const expected = new Date('December 17, 1995 01:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addHours(2)(date)
     const expected = new Date('December 17, 1995 05:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 })
 

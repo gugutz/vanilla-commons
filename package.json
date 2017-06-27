@@ -81,6 +81,6 @@
   },
   "dependencies": {
     "kind-of": "^5.0.0",
-    "leap-year": "^2.0.1"
+    "month-days": "^2.1.0"
   }
 }

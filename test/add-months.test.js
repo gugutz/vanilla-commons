@@ -4,36 +4,36 @@ describe('addMonths main functionality', () => {
   it('should addMonths of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMonths(2, date)
-    const expected = new Date('February 17, 1995 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    const expected = new Date('February 17, 1996 03:24:00')
+    expect(actual).toEqual(expected)
   })
 
   it('should remove months of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMonths(-2, date)
     const expected = new Date('October 17, 1995 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMonths(2)(date)
-    const expected = new Date('February 17, 1995 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    const expected = new Date('February 17, 1996 03:24:00')
+    expect(actual).toEqual(expected)
   })
 
   it('should go to the last day of the month if the next month doesn\'t have enough days', () => {
     const date = new Date('July 31, 1995 03:24:00')
     const actual = addMonths(-1, date)
     const expected = new Date('June 30, 1995 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should handle 29 February in leap years', () => {
     const date = new Date('February 29, 2016 03:24:00')
     const actual = addMonths(12, date)
     const expected = new Date('February 28, 2017 03:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 })
 

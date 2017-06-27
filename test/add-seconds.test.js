@@ -5,21 +5,21 @@ describe('addSeconds main functionality', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addSeconds(60, date)
     const expected = new Date('December 17, 1995 03:25:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should remove seconds of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addSeconds(-60, date)
     const expected = new Date('December 17, 1995 03:23:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addSeconds(60)(date)
     const expected = new Date('December 17, 1995 03:25:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 })
 

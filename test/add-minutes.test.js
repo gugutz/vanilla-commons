@@ -5,21 +5,21 @@ describe('addMinutes main functionality', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMinutes(60, date)
     const expected = new Date('December 17, 1995 04:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should remove minutes of a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMinutes(-60, date)
     const expected = new Date('December 17, 1995 02:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMinutes(60)(date)
     const expected = new Date('December 17, 1995 04:24:00')
-    expect(actual.getTime()).toBe(expected.getTime())
+    expect(actual).toEqual(expected)
   })
 })
 
