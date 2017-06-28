@@ -9,10 +9,10 @@ describe('diffDate main functionality', () => {
       milliseconds: 31622460000,
       seconds: 31622460,
       minutes: 527041,
-      hours: 8785,
+      hours: 8784.02,
       days: 366,
-      weeks: 53,
-      months: 12,
+      weeks: 52.29,
+      months: 12.2,
       years: 1
     }
     expect(actual).toEqual(expected)
@@ -26,10 +26,10 @@ describe('diffDate main functionality', () => {
       milliseconds: 31622460000,
       seconds: 31622460,
       minutes: 527041,
-      hours: 8785,
+      hours: 8784.02,
       days: 366,
-      weeks: 53,
-      months: 12,
+      weeks: 52.29,
+      months: 12.2,
       years: 1
     }
     expect(actual).toEqual(expected)
