@@ -23,6 +23,9 @@ export default {
           }
         ],
         'stage-0'
+      ],
+      plugins: [
+        'external-helpers'
       ]
     }),
     nodeResolve(),
