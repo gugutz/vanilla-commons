@@ -7,10 +7,10 @@ describe('curry main functionality', () => {
     expect(typeof curry(add)).toBe('function')
     expect(typeof curry(add, 2)).toBe('function')
 
-    expect(curry(add, 2, 2)).toEqual(4)
-    expect(curry(add)(2, 2)).toEqual(4)
-    expect(curry(add)(2)(2)).toEqual(4)
-    expect(curry(add)(2)(2)).toEqual(4)
+    expect(curry(add, 2, 2)).toBe(4)
+    expect(curry(add)(2, 2)).toBe(4)
+    expect(curry(add)(2)(2)).toBe(4)
+    expect(curry(add)(2)(2)).toBe(4)
   })
 
   it('should curry a function with three arguments', () => {
@@ -21,14 +21,14 @@ describe('curry main functionality', () => {
     expect(typeof curry(formula, 2, 2)).toBe('function')
     expect(typeof curry(formula)(2)(2)).toBe('function')
 
-    expect(curry(formula, 2, 2, 2)).toEqual(6)
-    expect(curry(formula)(2, 2, 2)).toEqual(6)
-    expect(curry(formula, 2)(2, 2)).toEqual(6)
-    expect(curry(formula)(2)(2, 2)).toEqual(6)
-    expect(curry(formula)(2, 2)(2)).toEqual(6)
-    expect(curry(formula)(2, 2)(2)).toEqual(6)
-    expect(curry(formula)(2)(2)(2)).toEqual(6)
-    expect(curry(formula)(2)(2)(2)).toEqual(6)
+    expect(curry(formula, 2, 2, 2)).toBe(6)
+    expect(curry(formula)(2, 2, 2)).toBe(6)
+    expect(curry(formula, 2)(2, 2)).toBe(6)
+    expect(curry(formula)(2)(2, 2)).toBe(6)
+    expect(curry(formula)(2, 2)(2)).toBe(6)
+    expect(curry(formula)(2, 2)(2)).toBe(6)
+    expect(curry(formula)(2)(2)(2)).toBe(6)
+    expect(curry(formula)(2)(2)(2)).toBe(6)
   })
 })
 

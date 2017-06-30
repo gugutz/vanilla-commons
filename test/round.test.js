@@ -2,11 +2,11 @@ import {round} from '../lib/number'
 
 describe('round main functionality', () => {
   it('should return a number with two decimal places', () => {
-    expect(round(2)).toEqual(2)
-    expect(round(Math.E)).toEqual(2.72)
-    expect(round(Math.LN10)).toEqual(2.3)
-    expect(round(Math.LN2)).toEqual(0.69)
-    expect(round(Math.PI)).toEqual(3.14)
+    expect(round(2)).toBe(2)
+    expect(round(Math.E)).toBe(2.72)
+    expect(round(Math.LN10)).toBe(2.3)
+    expect(round(Math.LN2)).toBe(0.69)
+    expect(round(Math.PI)).toBe(3.14)
   })
 
   it('should handle negative numbers', () => {

@@ -88,6 +88,7 @@
     "semicolon": false
   },
   "dependencies": {
+    "is-dom": "^1.0.9",
     "kind-of": "^5.0.0",
     "month-days": "^2.1.0",
     "tinydate": "^1.0.0"

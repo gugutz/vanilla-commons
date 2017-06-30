@@ -2,13 +2,13 @@ import {capitalize} from '../lib/string'
 
 describe('capitalize main functionality', () => {
   it('should capitalize string', () => {
-    expect(capitalize('string')).toEqual('String')
+    expect(capitalize('string')).toBe('String')
   })
 
   it('should ignore strings that does not start with letters', () => {
-    expect(capitalize('')).toEqual('')
-    expect(capitalize('\n \n')).toEqual('\n \n')
-    expect(capitalize(' hjhj ')).toEqual(' hjhj ')
+    expect(capitalize('')).toBe('')
+    expect(capitalize('\n \n')).toBe('\n \n')
+    expect(capitalize(' hjhj ')).toBe(' hjhj ')
   })
 })
 

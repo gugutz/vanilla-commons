@@ -2,10 +2,10 @@ import {cleanUpString} from '../lib/string'
 
 describe('cleanUpString main functionality', () => {
   it('should cleanUpString string', () => {
-    expect(cleanUpString('str\ning ')).toEqual('string')
-    expect(cleanUpString('')).toEqual('')
-    expect(cleanUpString('\n \n\r \r\n')).toEqual('')
-    expect(cleanUpString('\n \n\r hjhj ')).toEqual('hjhj')
+    expect(cleanUpString('str\ning ')).toBe('string')
+    expect(cleanUpString('')).toBe('')
+    expect(cleanUpString('\n \n\r \r\n')).toBe('')
+    expect(cleanUpString('\n \n\r hjhj ')).toBe('hjhj')
   })
 })
 
