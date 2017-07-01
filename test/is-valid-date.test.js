@@ -1,98 +1,103 @@
-import {formatDate} from '../lib/date'
+import {isValidDate} from '../lib/date'
 
-describe('formatDate main functionality', () => {
-  it('should format a date', () => {
-    const date = new Date('December 17, 1995 03:24:00')
+describe('isValidDate main functionality', () => {
+  it('should return true if the date is valid', () => {
+    const dateStr = '17/12/1995 03:24:00'
     const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
-    const actual = formatDate(format, date)
-    const expected = '17/12/1995 03:24:00'
-    expect(actual).toBe(expected)
+    const actual = isValidDate(format,dateStr)
+    expect(actual).toBe(true)
+  })
+
+  it('should return false if the date is not valid', () => {
+    const dateStr = '29/02/1995 03:24:00'
+    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+    const actual = isValidDate(format, dateStr)
+    expect(actual).toBe(false)
   })
 
   it('should be curried', () => {
-    const date = new Date('December 17, 1995 03:24:00')
+    const dateStr = '17/12/1995 03:24:00'
     const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
-    const actual = formatDate(format)(date)
-    const expected = '17/12/1995 03:24:00'
-    expect(actual).toBe(expected)
+    const actual = isValidDate(format)(dateStr)
+    expect(actual).toBe(true)
   })
 })
 
-describe('formatDate arguments validation errors', () => {
+describe('isValidDate arguments validation errors', () => {
   it('should throw a TypeError when unexpected argument types', () => {
     expect(() => {
-      formatDate({})(new Date())
+      isValidDate({})(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(null)(new Date())
+      isValidDate(null)(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(() => {})(new Date())
+      isValidDate(() => {})(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)({})
+      isValidDate(42)({})
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(null)
+      isValidDate(42)(null)
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(42)
+      isValidDate(42)(42)
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(() => {})
+      isValidDate(42)(() => {})
     }).toThrow(TypeError)
   })
 
   it('should throw a TypeError when one of the arguments is not defined', () => {
     expect(() => {
-      formatDate(undefined)(new Date())
+      isValidDate(undefined)(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(23)(undefined)
+      isValidDate(23)(undefined)
     }).toThrow(TypeError)
   })
 
   it('should throw errors with friendly messages has an unexpected type', () => {
     const expected = expect(() => {
-      formatDate({})(new Date())
+      isValidDate({})(new Date())
     })
 
     expected.toThrow(/1st/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`isValidDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
     const expected = expect(() => {
-      formatDate(undefined)(new Date())
+      isValidDate(undefined)(new Date())
     })
 
     expected.toThrow(/1st/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`isValidDate`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
     const expected = expect(() => {
-      formatDate('{YYYY}')({})
+      isValidDate('{YYYY}')({})
     })
 
     expected.toThrow(/2nd/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`isValidDate`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/date is expected/)
+    expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument is not defined', () => {
     const expected = expect(() => {
-      formatDate('{YYYY}')(undefined)
+      isValidDate('{YYYY}')(undefined)
     })
 
     expected.toThrow(/2nd/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`isValidDate`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/date is expected/)
+    expected.toThrow(/string is expected/)
   })
 })

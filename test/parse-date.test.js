@@ -1,98 +1,98 @@
-import {formatDate} from '../lib/date'
+import {parseDate} from '../lib/date'
 
-describe('formatDate main functionality', () => {
-  it('should format a date', () => {
-    const date = new Date('December 17, 1995 03:24:00')
+describe('parseDate main functionality', () => {
+  it('should parse a date', () => {
+    const dateStr = '17/12/1995 03:24:00'
     const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
-    const actual = formatDate(format, date)
-    const expected = '17/12/1995 03:24:00'
-    expect(actual).toBe(expected)
+    const actual = parseDate(format, dateStr)
+    const expected = new Date('December 17, 1995 03:24:00')
+    expect(actual).toEqual(expected)
   })
 
   it('should be curried', () => {
-    const date = new Date('December 17, 1995 03:24:00')
+    const dateStr = '17/12/1995 03:24:00'
     const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
-    const actual = formatDate(format)(date)
-    const expected = '17/12/1995 03:24:00'
-    expect(actual).toBe(expected)
+    const actual = parseDate(format)(dateStr)
+    const expected = new Date('December 17, 1995 03:24:00')
+    expect(actual).toEqual(expected)
   })
 })
 
-describe('formatDate arguments validation errors', () => {
+describe('parseDate arguments validation errors', () => {
   it('should throw a TypeError when unexpected argument types', () => {
     expect(() => {
-      formatDate({})(new Date())
+      parseDate({})(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(null)(new Date())
+      parseDate(null)(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(() => {})(new Date())
+      parseDate(() => {})(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)({})
+      parseDate(42)({})
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(null)
+      parseDate(42)(null)
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(42)
+      parseDate(42)(42)
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(42)(() => {})
+      parseDate(42)(() => {})
     }).toThrow(TypeError)
   })
 
   it('should throw a TypeError when one of the arguments is not defined', () => {
     expect(() => {
-      formatDate(undefined)(new Date())
+      parseDate(undefined)(new Date())
     }).toThrow(TypeError)
     expect(() => {
-      formatDate(23)(undefined)
+      parseDate(23)(undefined)
     }).toThrow(TypeError)
   })
 
   it('should throw errors with friendly messages has an unexpected type', () => {
     const expected = expect(() => {
-      formatDate({})(new Date())
+      parseDate({})(new Date())
     })
 
     expected.toThrow(/1st/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`parseDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
     const expected = expect(() => {
-      formatDate(undefined)(new Date())
+      parseDate(undefined)(new Date())
     })
 
     expected.toThrow(/1st/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`parseDate`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
     const expected = expect(() => {
-      formatDate('{YYYY}')({})
+      parseDate('{YYYY}')({})
     })
 
     expected.toThrow(/2nd/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`parseDate`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/date is expected/)
+    expected.toThrow(/string is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument is not defined', () => {
     const expected = expect(() => {
-      formatDate('{YYYY}')(undefined)
+      parseDate('{YYYY}')(undefined)
     })
 
     expected.toThrow(/2nd/)
-    expected.toThrow(/`formatDate`/)
+    expected.toThrow(/`parseDate`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/date is expected/)
+    expected.toThrow(/string is expected/)
   })
 })
