@@ -4,7 +4,7 @@ describe('isValidDate main functionality', () => {
   it('should return true if the date is valid', () => {
     const dateStr = '17/12/1995 03:24:00'
     const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
-    const actual = isValidDate(format,dateStr)
+    const actual = isValidDate(format, dateStr)
     expect(actual).toBe(true)
   })
 

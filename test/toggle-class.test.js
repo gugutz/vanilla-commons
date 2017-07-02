@@ -22,6 +22,22 @@ describe('toggleClass main functionality', () => {
     toggleClass('hey')(element)
     expect(element.className).toBe('')
   })
+
+  it('should accept an array of classes', () => {
+    const element = document.createElement('div')
+    element.className = 'hey'
+    toggleClass(['hey', 'there'], element)
+    expect(element.className).toBe('there')
+    toggleClass(['hey', 'there'], element)
+    expect(element.className).toBe('hey')
+  })
+
+  it('should work with prefix classes', () => {
+    const element = document.createElement('div')
+    element.className = 'table table-hover table-inverse'
+    toggleClass('table')(element)
+    expect(element.className).toBe('table-hover table-inverse')
+  })
 })
 
 describe('toggleClass arguments validation errors', () => {
@@ -60,7 +76,7 @@ describe('toggleClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`toggleClass`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
@@ -71,7 +87,7 @@ describe('toggleClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`toggleClass`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {

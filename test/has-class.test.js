@@ -15,6 +15,21 @@ describe('hasClass main functionality', () => {
 
     expect(hasClass('hey', element)).toBe(true)
   })
+
+  it('should accept an array of classes', () => {
+    const element = document.createElement('div')
+    element.className = 'hey there hello'
+
+    expect(hasClass(['hey', 'there'], element)).toBe(true)
+    expect(hasClass(['hey', 'hello'], element)).toBe(true)
+    expect(hasClass(['hey', 'there', 'man'], element)).toBe(false)
+  })
+
+  it('should work with prefix classes', () => {
+    const element = document.createElement('div')
+    element.className = 'table-hover'
+    expect(hasClass('table', element)).toBe(false)
+  })
 })
 
 describe('hasClass arguments validation errors', () => {
@@ -53,7 +68,7 @@ describe('hasClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`hasClass`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
@@ -64,7 +79,7 @@ describe('hasClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`hasClass`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {

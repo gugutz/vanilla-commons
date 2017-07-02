@@ -22,6 +22,20 @@ describe('removeClass main functionality', () => {
     removeClass('hey')(element)
     expect(element.className).toBe('there')
   })
+
+  it('should accept an array of classes', () => {
+    const element = document.createElement('div')
+    element.className = 'hey there'
+    removeClass(['hey', 'there'])(element)
+    expect(element.className).toBe('')
+  })
+
+  it('should work with prefix classes', () => {
+    const element = document.createElement('div')
+    element.className = 'table table-hover table-inverse'
+    removeClass(['table-hover', 'table-inverse'])(element)
+    expect(element.className).toBe('table')
+  })
 })
 
 describe('removeClass arguments validation errors', () => {
@@ -60,7 +74,7 @@ describe('removeClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
@@ -71,7 +85,7 @@ describe('removeClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {

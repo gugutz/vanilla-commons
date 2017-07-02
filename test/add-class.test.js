@@ -20,6 +20,19 @@ describe('addClass main functionality', () => {
     addClass('hey')(element)
     expect(element.className).toBe('hey')
   })
+
+  it('should accept an array of classes', () => {
+    const element = document.createElement('div')
+    addClass(['hey', 'there'])(element)
+    expect(element.className).toBe('hey there')
+  })
+
+  it('should work with prefix classes', () => {
+    const element = document.createElement('div')
+    element.className = 'table'
+    addClass(['table-hover', 'table-inverse'])(element)
+    expect(element.className).toBe('table table-hover table-inverse')
+  })
 })
 
 describe('addClass arguments validation errors', () => {
@@ -58,7 +71,7 @@ describe('addClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/unexpected type/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument is not defined', () => {
@@ -69,7 +82,7 @@ describe('addClass arguments validation errors', () => {
     expected.toThrow(/1st/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/is not defined/)
-    expected.toThrow(/string is expected/)
+    expected.toThrow(/string or array is expected/)
   })
 
   it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
