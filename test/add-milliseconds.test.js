@@ -1,14 +1,14 @@
 import {addMilliseconds} from '../lib/date'
 
 describe('addMilliseconds main functionality', () => {
-  it('should addMilliseconds of a date', () => {
+  it('should add milliseconds on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMilliseconds(1000 * 60, date)
     const expected = new Date('December 17, 1995 03:25:00')
     expect(actual).toEqual(expected)
   })
 
-  it('should remove milliseconds of a date', () => {
+  it('should remove milliseconds on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMilliseconds(1000 * -60, date)
     const expected = new Date('December 17, 1995 03:23:00')
@@ -48,15 +48,6 @@ describe('addMilliseconds arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addMilliseconds(undefined, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
   it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addMilliseconds({}, new Date())
@@ -68,7 +59,7 @@ describe('addMilliseconds arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addMilliseconds(undefined, undefined)
     })
@@ -79,7 +70,7 @@ describe('addMilliseconds arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('sshould throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addMilliseconds(23, {})
     })
@@ -90,7 +81,7 @@ describe('addMilliseconds arguments validation errors', () => {
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addMilliseconds(23)(undefined)
     })

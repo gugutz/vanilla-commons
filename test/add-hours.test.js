@@ -1,7 +1,7 @@
 import {addHours} from '../lib/date'
 
 describe('addHours main functionality', () => {
-  it('should addHours of a date', () => {
+  it('should add hours on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addHours(2, date)
     const expected = new Date('December 17, 1995 05:24:00')
@@ -24,7 +24,7 @@ describe('addHours main functionality', () => {
 })
 
 describe('addHours arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
+  it('should throw a TypeError when receive unexpected argument types', () => {
     expect(() => {
       addHours({}, new Date())
     }).toThrow(TypeError)
@@ -48,16 +48,7 @@ describe('addHours arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addHours(undefined, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addHours(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addHours({}, new Date())
     })
@@ -68,7 +59,7 @@ describe('addHours arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addHours(undefined, new Date())
     })
@@ -79,7 +70,7 @@ describe('addHours arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addHours(23, {})
     })
@@ -90,7 +81,7 @@ describe('addHours arguments validation errors', () => {
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addHours(23)(undefined)
     })

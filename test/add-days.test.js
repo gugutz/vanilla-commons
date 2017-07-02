@@ -1,7 +1,7 @@
 import {addDays} from '../lib/date'
 
 describe('addDays main functionality', () => {
-  it('should addDays of a date', () => {
+  it('should add days on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addDays(6, date)
     const expected = new Date('December 23, 1995 03:24:00')
@@ -24,7 +24,7 @@ describe('addDays main functionality', () => {
 })
 
 describe('addDays arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
+  it('should throw a TypeError when receive unexpected argument types', () => {
     expect(() => {
       addDays({}, new Date())
     }).toThrow(TypeError)
@@ -48,16 +48,7 @@ describe('addDays arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addDays(undefined, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addDays({}, new Date())
     })
@@ -68,7 +59,7 @@ describe('addDays arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addDays(undefined, new Date())
     })
@@ -79,7 +70,7 @@ describe('addDays arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addDays(23, {})
     })

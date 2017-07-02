@@ -1,7 +1,7 @@
 import {addSeconds} from '../lib/date'
 
 describe('addSeconds main functionality', () => {
-  it('should addSeconds of a date', () => {
+  it('should add seconds on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addSeconds(60, date)
     const expected = new Date('December 17, 1995 03:25:00')
@@ -48,16 +48,7 @@ describe('addSeconds arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addSeconds(undefined, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message whe the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addSeconds({}, new Date())
     })
@@ -68,7 +59,7 @@ describe('addSeconds arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addSeconds(undefined, new Date())
     })
@@ -79,7 +70,7 @@ describe('addSeconds arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addSeconds(23, {})
     })
@@ -90,7 +81,7 @@ describe('addSeconds arguments validation errors', () => {
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addSeconds(23)(undefined)
     })

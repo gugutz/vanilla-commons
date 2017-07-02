@@ -1,7 +1,7 @@
 import {addMinutes} from '../lib/date'
 
 describe('addMinutes main functionality', () => {
-  it('should addMinutes of a date', () => {
+  it('should add minutes on a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
     const actual = addMinutes(60, date)
     const expected = new Date('December 17, 1995 04:24:00')
@@ -48,16 +48,7 @@ describe('addMinutes arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addMinutes(undefined, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMinutes(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addMinutes({}, new Date())
     })
@@ -68,7 +59,7 @@ describe('addMinutes arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addMinutes(undefined, new Date())
     })
@@ -79,7 +70,7 @@ describe('addMinutes arguments validation errors', () => {
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addMinutes(23, {})
     })
@@ -90,7 +81,7 @@ describe('addMinutes arguments validation errors', () => {
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addMinutes(23)(undefined)
     })

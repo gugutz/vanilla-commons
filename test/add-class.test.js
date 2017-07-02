@@ -36,7 +36,7 @@ describe('addClass main functionality', () => {
 })
 
 describe('addClass arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
+  it('should throw a TypeError when receive unexpected argument types', () => {
     expect(() => {
       addClass({}, () => {})
     }).toThrow(TypeError)
@@ -54,16 +54,7 @@ describe('addClass arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      addClass(undefined, document.createElement('div'))
-    }).toThrow(TypeError)
-    expect(() => {
-      addClass('hey', undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addClass({}, document.createElement('div'))
     })
@@ -74,7 +65,7 @@ describe('addClass arguments validation errors', () => {
     expected.toThrow(/string or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       addClass(undefined, document.createElement('div'))
     })
@@ -85,7 +76,7 @@ describe('addClass arguments validation errors', () => {
     expected.toThrow(/string or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       addClass('hey', 42)
     })
@@ -96,7 +87,7 @@ describe('addClass arguments validation errors', () => {
     expected.toThrow(/element is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addClass('hey', undefined)
     })
