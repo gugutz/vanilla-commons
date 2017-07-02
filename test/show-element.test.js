@@ -1,16 +1,14 @@
-import {killElement} from '../lib/element'
+import {showElement} from '../lib/element'
 
-describe('killElement main functionality', () => {
-  it('should kill a element', () => {
-    const parent = document.createElement('div')
+describe('showElement main functionality', () => {
+  it('should show a element', () => {
     const child = document.createElement('div')
-    parent.appendChild(child)
-    killElement(child)
-    expect(parent.children.length).toBe(0)
+    child.id = 'child1'
+    expect(showElement(child)).toEqual(child)
+    expect(child.style.display).toBe('block')
   })
 
   it('should accept an array of elements', () => {
-    const parent = document.createElement('div')
     const child1 = document.createElement('div')
     child1.id = 'child1'
     const child2 = document.createElement('div')
@@ -18,54 +16,52 @@ describe('killElement main functionality', () => {
     const child3 = document.createElement('div')
     child3.id = 'child3'
 
-    parent.appendChild(child1)
-    parent.appendChild(child2)
-    parent.appendChild(child3)
-    killElement([child1, child3])
-    expect(parent.children.length).toBe(1)
-    expect(parent.children[0]).toEqual(child2)
+    expect(showElement([child1, child3])).toEqual([child1, child3])
+    expect(child1.style.display).toBe('block')
+    expect(child2.style.display).not.toBe('block')
+    expect(child3.style.display).toBe('block')
   })
 })
 
-describe('killElement arguments validation errors', () => {
+describe('showElement arguments validation errors', () => {
   it('should throw a TypeError when unexpected argument types', () => {
     expect(() => {
-      killElement({})
+      showElement({})
     }).toThrow(TypeError)
     expect(() => {
-      killElement(null)
+      showElement(null)
     }).toThrow(TypeError)
     expect(() => {
-      killElement(42)
+      showElement(42)
     }).toThrow(TypeError)
     expect(() => {
-      killElement(() => {})
+      showElement(() => {})
     }).toThrow(TypeError)
   })
 
   it('should throw a TypeError when the first argument is not defined', () => {
     expect(() => {
-      killElement()
+      showElement()
     }).toThrow(TypeError)
   })
 
   it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
     const expected = expect(() => {
-      killElement({})
+      showElement({})
     })
 
     expected.toThrow(/1st/)
-    expected.toThrow(/`killElement`/)
+    expected.toThrow(/`showElement`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element or array is expected/)
   })
 
   it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
     const expected = expect(() => {
-      killElement()
+      showElement()
     })
     expected.toThrow(/1st/)
-    expected.toThrow(/`killElement`/)
+    expected.toThrow(/`showElement`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/element or array is expected/)
   })
