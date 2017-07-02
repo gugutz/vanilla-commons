@@ -28,42 +28,24 @@ describe('killElement main functionality', () => {
 })
 
 describe('killElement arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      killElement({})
-    }).toThrow(TypeError)
-    expect(() => {
-      killElement(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      killElement(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      killElement(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      killElement()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       killElement({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`killElement`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       killElement()
     })
+
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`killElement`/)
     expected.toThrow(/is not defined/)

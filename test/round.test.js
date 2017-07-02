@@ -17,49 +17,24 @@ describe('round main functionality', () => {
 })
 
 describe('round arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      round({})
-    }).toThrow(TypeError)
-    expect(() => {
-      round(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      round(() => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      round({})
-    }).toThrow(TypeError)
-    expect(() => {
-      round(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      round(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the argument is not defined', () => {
-    expect(() => {
-      round(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       round(new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`round`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       round(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`round`/)
     expected.toThrow(/is not defined/)

@@ -24,42 +24,24 @@ describe('hideElement main functionality', () => {
 })
 
 describe('hideElement arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      hideElement({})
-    }).toThrow(TypeError)
-    expect(() => {
-      hideElement(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      hideElement(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      hideElement(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      hideElement()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       hideElement({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`hideElement`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       hideElement()
     })
+
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`hideElement`/)
     expected.toThrow(/is not defined/)

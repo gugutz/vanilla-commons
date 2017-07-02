@@ -33,43 +33,24 @@ describe('curry main functionality', () => {
 })
 
 describe('curry arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      curry({})
-    }).toThrow(TypeError)
-    expect(() => {
-      curry(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      curry(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      curry('hey')
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      curry()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       curry({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`curry`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/function is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument has a unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has a unexpected type', () => {
     const expected = expect(() => {
       curry()
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`curry`/)
     expected.toThrow(/is not defined/)

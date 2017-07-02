@@ -24,35 +24,12 @@ describe('addSeconds main functionality', () => {
 })
 
 describe('addSeconds arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      addSeconds({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      addSeconds(42, () => {})
-    }).toThrow(TypeError)
-  })
-
   it('should throw an error with a friendly message whe the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addSeconds({}, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addSeconds`/)
     expected.toThrow(/unexpected type/)
@@ -64,6 +41,7 @@ describe('addSeconds arguments validation errors', () => {
       addSeconds(undefined, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addSeconds`/)
     expected.toThrow(/is not defined/)
@@ -75,6 +53,7 @@ describe('addSeconds arguments validation errors', () => {
       addSeconds(23, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addSeconds`/)
     expected.toThrow(/unexpected type/)
@@ -86,6 +65,7 @@ describe('addSeconds arguments validation errors', () => {
       addSeconds(23)(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addSeconds`/)
     expected.toThrow(/is not defined/)

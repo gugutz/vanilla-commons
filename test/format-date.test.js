@@ -19,77 +19,48 @@ describe('formatDate main functionality', () => {
 })
 
 describe('formatDate arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      formatDate({})(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(null)(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(() => {})(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(42)({})
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(42)(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(42)(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(42)(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      formatDate(undefined)(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      formatDate(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       formatDate({})(new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`formatDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       formatDate(undefined)(new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`formatDate`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       formatDate('{YYYY}')({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`formatDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       formatDate('{YYYY}')(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`formatDate`/)
     expected.toThrow(/is not defined/)

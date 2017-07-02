@@ -24,35 +24,12 @@ describe('addWeeks main functionality', () => {
 })
 
 describe('addWeeks arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      addWeeks({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      addWeeks(42, () => {})
-    }).toThrow(TypeError)
-  })
-
   it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addWeeks({}, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addWeeks`/)
     expected.toThrow(/unexpected type/)
@@ -64,6 +41,7 @@ describe('addWeeks arguments validation errors', () => {
       addWeeks(undefined, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addWeeks`/)
     expected.toThrow(/is not defined/)
@@ -75,6 +53,7 @@ describe('addWeeks arguments validation errors', () => {
       addWeeks(23, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addWeeks`/)
     expected.toThrow(/unexpected type/)
@@ -86,6 +65,7 @@ describe('addWeeks arguments validation errors', () => {
       addWeeks(23)(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addWeeks`/)
     expected.toThrow(/is not defined/)

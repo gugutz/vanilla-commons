@@ -24,77 +24,48 @@ describe('isValidDate main functionality', () => {
 })
 
 describe('isValidDate arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      isValidDate({})(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(null)(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(() => {})(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(42)({})
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(42)(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(42)(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(42)(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      isValidDate(undefined)(new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      isValidDate(23)(undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       isValidDate({})(new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`isValidDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       isValidDate(undefined)(new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`isValidDate`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       isValidDate('{YYYY}')({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`isValidDate`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       isValidDate('{YYYY}')(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`isValidDate`/)
     expected.toThrow(/is not defined/)

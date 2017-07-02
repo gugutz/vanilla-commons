@@ -43,68 +43,48 @@ describe('insertElementBefore main functionality', () => {
 })
 
 describe('insertElementBefore arguments validation errors', () => {
-  it('should throw a TypeError when receive unexpected argument types', () => {
-    expect(() => {
-      insertElementBefore({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      insertElementBefore(42, () => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       insertElementBefore({}, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`insertElementBefore`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       insertElementBefore(undefined, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`insertElementBefore`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/element is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       insertElementBefore(document.createElement('div'), {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`insertElementBefore`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       insertElementBefore(document.createElement('div'), undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`insertElementBefore`/)
     expected.toThrow(/is not defined/)

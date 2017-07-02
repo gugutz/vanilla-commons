@@ -24,35 +24,12 @@ describe('addDays main functionality', () => {
 })
 
 describe('addDays arguments validation errors', () => {
-  it('should throw a TypeError when receive unexpected argument types', () => {
-    expect(() => {
-      addDays({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      addDays(42, () => {})
-    }).toThrow(TypeError)
-  })
-
   it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addDays({}, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addDays`/)
     expected.toThrow(/unexpected type/)
@@ -64,6 +41,7 @@ describe('addDays arguments validation errors', () => {
       addDays(undefined, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addDays`/)
     expected.toThrow(/is not defined/)
@@ -75,17 +53,19 @@ describe('addDays arguments validation errors', () => {
       addDays(23, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addDays`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/date is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       addDays(23)(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addDays`/)
     expected.toThrow(/is not defined/)

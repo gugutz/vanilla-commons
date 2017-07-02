@@ -39,71 +39,48 @@ describe('removeClass main functionality', () => {
 })
 
 describe('removeClass arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      removeClass({}, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      removeClass(null, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      removeClass(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      removeClass(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      removeClass(42, 42)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      removeClass(undefined, document.createElement('div'))
-    }).toThrow(TypeError)
-    expect(() => {
-      removeClass('hey', undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       removeClass({}, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       removeClass(undefined, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/string or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       removeClass('hey', 42)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       removeClass('hey', undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`removeClass`/)
     expected.toThrow(/is not defined/)

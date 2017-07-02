@@ -2,7 +2,7 @@ import {mapKeys} from '../lib/object'
 import {capitalize} from '../lib/string'
 
 describe('mapKeys main functionality', () => {
-  it('map over the values of a object', () => {
+  it('should map over the keys of a object', () => {
     const actual = mapKeys(capitalize, {
       captain: 'picard',
       firstOfficer: 'riker'
@@ -59,7 +59,7 @@ describe('mapKeys arguments validation errors', () => {
     }).toThrow(TypeError)
   })
 
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       mapKeys({}, {})
     })
@@ -70,7 +70,7 @@ describe('mapKeys arguments validation errors', () => {
     expected.toThrow(/function is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       mapKeys(undefined, {})
     })
@@ -81,7 +81,7 @@ describe('mapKeys arguments validation errors', () => {
     expected.toThrow(/function is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       mapKeys(() => {}, 42)
     })
@@ -92,7 +92,7 @@ describe('mapKeys arguments validation errors', () => {
     expected.toThrow(/object is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       mapKeys(() => {}, undefined)
     })

@@ -11,43 +11,24 @@ describe('flattenArray main functionality', () => {
 })
 
 describe('flattenArray arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      flattenArray({})
-    }).toThrow(TypeError)
-    expect(() => {
-      flattenArray(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      flattenArray(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      flattenArray(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      flattenArray()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with a friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       flattenArray({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`flattenArray`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/array is expected/)
   })
 
-  it('should throw errors with a friendly messages when the first argument is undefined', () => {
+  it('should throw an error with a friendly message when the first argument is undefined', () => {
     const expected = expect(() => {
       flattenArray()
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`flattenArray`/)
     expected.toThrow(/is not defined/)

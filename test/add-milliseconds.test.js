@@ -24,35 +24,12 @@ describe('addMilliseconds main functionality', () => {
 })
 
 describe('addMilliseconds arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      addMilliseconds({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      addMilliseconds(42, () => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addMilliseconds({}, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addMilliseconds`/)
     expected.toThrow(/unexpected type/)
@@ -64,6 +41,7 @@ describe('addMilliseconds arguments validation errors', () => {
       addMilliseconds(undefined, undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addMilliseconds`/)
     expected.toThrow(/is not defined/)
@@ -75,6 +53,7 @@ describe('addMilliseconds arguments validation errors', () => {
       addMilliseconds(23, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addMilliseconds`/)
     expected.toThrow(/unexpected type/)
@@ -86,6 +65,7 @@ describe('addMilliseconds arguments validation errors', () => {
       addMilliseconds(23)(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addMilliseconds`/)
     expected.toThrow(/is not defined/)

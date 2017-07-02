@@ -38,71 +38,48 @@ describe('throttle main functionality', () => {
 })
 
 describe('throttle arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      throttle({}, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      throttle(null, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      throttle(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      throttle(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      throttle(42, 42)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when one of the arguments is not defined', () => {
-    expect(() => {
-      throttle(undefined, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      throttle(23, undefined)
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       throttle({}, () => {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`throttle`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument is not defined', () => {
+  it('should throw an error with a friendly message when the first argument is not defined', () => {
     const expected = expect(() => {
       throttle(undefined, () => {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`throttle`/)
     expected.toThrow(/is not defined/)
     expected.toThrow(/number is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
       throttle(42, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`throttle`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/function is expected/)
   })
 
-  it('should throw errors with friendly messages when the second argument is not defined', () => {
+  it('should throw an error with a friendly message when the second argument is not defined', () => {
     const expected = expect(() => {
       throttle(42, undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`throttle`/)
     expected.toThrow(/is not defined/)

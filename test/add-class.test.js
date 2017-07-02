@@ -36,29 +36,12 @@ describe('addClass main functionality', () => {
 })
 
 describe('addClass arguments validation errors', () => {
-  it('should throw a TypeError when receive unexpected argument types', () => {
-    expect(() => {
-      addClass({}, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addClass(null, () => {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addClass(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addClass(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addClass(42, 42)
-    }).toThrow(TypeError)
-  })
-
   it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       addClass({}, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/unexpected type/)
@@ -70,6 +53,7 @@ describe('addClass arguments validation errors', () => {
       addClass(undefined, document.createElement('div'))
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/is not defined/)
@@ -81,6 +65,7 @@ describe('addClass arguments validation errors', () => {
       addClass('hey', 42)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/unexpected type/)
@@ -92,6 +77,7 @@ describe('addClass arguments validation errors', () => {
       addClass('hey', undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addClass`/)
     expected.toThrow(/is not defined/)

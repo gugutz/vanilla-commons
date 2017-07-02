@@ -38,35 +38,12 @@ describe('addMonths main functionality', () => {
 })
 
 describe('addMonths arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      addMonths({}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(null, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(() => {}, new Date())
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(42, {})
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(42, null)
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(42, 42)
-    }).toThrow(TypeError)
-    expect(() => {
-      addMonths(42, () => {})
-    }).toThrow(TypeError)
-  })
-
   it('should throw an error with a friendly message when the fist argument has an unexpected type', () => {
     const expected = expect(() => {
       addMonths({}, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addMonths`/)
     expected.toThrow(/unexpected type/)
@@ -78,6 +55,7 @@ describe('addMonths arguments validation errors', () => {
       addMonths(undefined, new Date())
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`addMonths`/)
     expected.toThrow(/is not defined/)
@@ -89,6 +67,7 @@ describe('addMonths arguments validation errors', () => {
       addMonths(23, {})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addMonths`/)
     expected.toThrow(/unexpected type/)
@@ -100,6 +79,7 @@ describe('addMonths arguments validation errors', () => {
       addMonths(23)(undefined)
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/2nd/)
     expected.toThrow(/`addMonths`/)
     expected.toThrow(/is not defined/)

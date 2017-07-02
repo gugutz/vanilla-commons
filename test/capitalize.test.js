@@ -1,7 +1,7 @@
 import {capitalize} from '../lib/string'
 
 describe('capitalize main functionality', () => {
-  it('should capitalize string', () => {
+  it('should capitalize a string', () => {
     expect(capitalize('string')).toBe('String')
   })
 
@@ -13,42 +13,24 @@ describe('capitalize main functionality', () => {
 })
 
 describe('capitalize arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      capitalize({})
-    }).toThrow(TypeError)
-    expect(() => {
-      capitalize(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      capitalize(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      capitalize(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      capitalize()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       capitalize({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`capitalize`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       capitalize()
     })
+
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`capitalize`/)
     expected.toThrow(/is not defined/)

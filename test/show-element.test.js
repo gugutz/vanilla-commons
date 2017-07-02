@@ -24,42 +24,24 @@ describe('showElement main functionality', () => {
 })
 
 describe('showElement arguments validation errors', () => {
-  it('should throw a TypeError when unexpected argument types', () => {
-    expect(() => {
-      showElement({})
-    }).toThrow(TypeError)
-    expect(() => {
-      showElement(null)
-    }).toThrow(TypeError)
-    expect(() => {
-      showElement(42)
-    }).toThrow(TypeError)
-    expect(() => {
-      showElement(() => {})
-    }).toThrow(TypeError)
-  })
-
-  it('should throw a TypeError when the first argument is not defined', () => {
-    expect(() => {
-      showElement()
-    }).toThrow(TypeError)
-  })
-
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       showElement({})
     })
 
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`showElement`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/element or array is expected/)
   })
 
-  it('should throw errors with friendly messages when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       showElement()
     })
+
+    expected.toThrow(TypeError)
     expected.toThrow(/1st/)
     expected.toThrow(/`showElement`/)
     expected.toThrow(/is not defined/)
