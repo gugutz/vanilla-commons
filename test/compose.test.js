@@ -52,7 +52,7 @@ describe('compose arguments validation errors', () => {
 
   it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
     const expected = expect(() => {
-      compose('{YYYY}', {})('hey')
+      compose(() => {}, {})('hey')
     })
 
     expected.toThrow(TypeError)
