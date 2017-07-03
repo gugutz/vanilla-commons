@@ -32,7 +32,7 @@ describe('mapValues main functionality', () => {
 })
 
 describe('mapValues arguments validation errors', () => {
-    it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
+  it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
       mapValues({}, {})
     })
