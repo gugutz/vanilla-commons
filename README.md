@@ -8,11 +8,13 @@
 
 ## Table of Contents
 
--   [Install](#install)
--   [Usage](#usage)
--   [API](#api)
--   [Contributing](#contributing)
--   [License](#license)
+- [Install](#install)
+- [Usage](#usage)
+- [Array Commons](#array-commons)
+- [Date Commons](#date-commons)
+- [Element Commons](#element-commons)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Install
 
@@ -58,51 +60,402 @@ const finalDate = pipe(
 // '24/03/1993 12:25:00'
 ```
 
-## API
+## Array Commons
 
-- [addClass](#addclass)
-- [addDays](#adddays)
-- [addHours](#addhours)
-- [addMilliseconds](#addMilliseconds)
-- [addMinutes](#addminutes)
-- [addMonths](#addmonths)
-- [addSeconds](#addseconds)
-- [addWeeks](#addweeks)
-- [addYears](#addyears)
-- [capitalize](#capitalize)
-- [cleanUpString](#cleanupstring)
-- [clearEvents](#clearevents)
-- [compose](#compose)
-- [curry](#curry)
-- [diffDate](#diffdate)
-- [flattenArray](#flattenarray)
-- [formatDate](#formatdate)
-- [getParents](#getparents)
-- [hasClass](#hasClass)
-- [hideElement](#hideelement)
-- [insertElementAfter](#insertelementafter)
-- [insertElementBefore](#insertelementbefore)
-- [isValidDate](#isvaliddate)
-- [killElement](#killelement)
-- [mapKeys](#mapkeys)
-- [mapValues](#mapvalues)
-- [parseDate](#parseDate)
-- [pipe](#pipe)
-- [removeClass](#removeClass)
-- [replaceElement](#replaceelement)
-- [round](#round)
-- [showElement](#showelement)
-- [throttle](#throttle)
-- [toggleClass](#toggleclass)
+### flattenArray(arr)
 
-### addClass
+Flatten nested arrays.
+
+**Parameters**
+
+- `arr` **[Array][Array]** Nested array.
+
+**Returns**
+
+**[Array][Array]** flattened.
+
+**Examples**
+
+```javascript
+import {flattenArray} from 'vanilla-commons'
+
+flattenArray([[1], [2, [3, 4]]])
+// [1, 2, 3, 4]
+```
+
+## Date Commons
+
+### addDays(days, date)
+
+Add days to a Date.
+
+**Parameters**
+
+- `days` **[Number][Number]** of days to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the days added.
+
+**Examples**
+
+```javascript
+import {addDays} from 'vanilla-commons'
+
+addDays(6, new Date('December 17, 1995 03:24:00'))
+// Sat, 23 Dec 1995 03:24:00
+
+addDays(-6, new Date('December 17, 1995 03:24:00'))
+// Mon, 11 Dec 1995 03:24:00
+
+addDays(6)(new Date('December 17, 1995 03:24:00'))
+// Sat, 23 Dec 1995 03:24:00
+```
+
+### addHours(hours, date)
+
+Add hours to a Date.
+
+**Parameters**
+
+- `hours` **[Number][Number]** of hours to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the hours added.
+
+**Examples**
+
+```javascript
+import {addHours} from 'vanilla-commons'
+
+addHours(6, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:00
+
+addHours(-6, new Date('December 17, 1995 03:24:00'))
+// Fri, 16 Dec 1995 21:24:00
+
+addHours(6)(new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:00
+```
+
+### addMilliseconds(milliseconds, date)
+
+Add milliseconds to a Date.
+
+**Parameters**
+
+- `milliseconds` **[Number][Number]** Number of milliseconds to add.
+- `date` **[Date][Date]** Date to be modified.
+
+**Returns**
+
+**[Date][Date]** with the milliseconds added.
+
+**Examples**
+
+```javascript
+import {addMilliseconds} from 'vanilla-commons'
+
+addMilliseconds(1000, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:01
+
+addMilliseconds(-1000, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:23:59
+
+addMilliseconds(1000)(new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:01
+```
+
+### addMinutes(minutes, date)
+
+Add minutes to a Date.
+
+**Parameters**
+
+- `minutes` **[Number][Number]** of minutes to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the minutes added.
+
+**Examples**
+
+```javascript
+import {addMinutes} from 'vanilla-commons'
+
+addMinutes(6, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:06
+
+addMinutes(-6, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:23:54
+
+addMinutes(6)(new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:24:06
+```
+
+### addMonths(months, date)
+
+Add months to a Date.
+
+**Parameters**
+
+- `months` **[Number][Number]** of months to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the months added.
+
+**Examples**
+
+```javascript
+import {addMonths} from 'vanilla-commons'
+
+addMonths(6, new Date('December 17, 1995 03:24:00'))
+// Mon, 17 Jun 1996 09:24:00
+
+addMonths(-6, new Date('December 17, 1995 03:24:00'))
+// Sat, 17 Jun 1995 09:24:00
+
+addMonths(6)(new Date('December 17, 1995 03:24:00'))
+// Mon, 17 Jun 1996 09:24:00
+```
+
+### addSeconds(seconds, date)
+
+Add seconds to a Date.
+
+**Parameters**
+
+- `seconds` **[Number][Number]** of seconds to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the seconds added.
+
+**Examples**
+
+```javascript
+import {addSeconds} from 'vanilla-commons'
+
+addSeconds(6, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:30:00
+
+addSeconds(-6, new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:18:00
+
+addSeconds(6)(new Date('December 17, 1995 03:24:00'))
+// Sun, 17 Dec 1995 09:30:00
+```
+
+### addWeeks(weeks, date)
+
+Add weeks to a Date.
+
+**Parameters**
+
+- `weeks` **[Number][Number]** of weeks to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the weeks added.
+
+**Examples**
+
+```javascript
+import {addWeeks} from 'vanilla-commons'
+
+addWeeks(1, new Date('December 17, 1995 03:24:00'))
+// Sun, 24 Dec 1995 09:24:00
+
+addWeeks(-1, new Date('December 17, 1995 03:24:00'))
+// Sun, 10 Dec 1995 09:24:00
+
+addWeeks(6)(new Date('December 17, 1995 03:24:00'))
+// Sun, 24 Dec 1995 09:24:00
+```
+
+### addYears(years, date)
+
+Add years to a Date.
+
+**Parameters**
+
+- `years` **[Number][Number]** of years to add.
+- `date` **[Date][Date]** to be modified.
+
+**Returns**
+
+**[Date][Date]** with the years added.
+
+**Examples**
+
+```javascript
+import {addYears} from 'vanilla-commons'
+
+addYears(1, new Date('December 17, 1995 03:24:00'))
+// Tue, 17 Dec 1996 09:24:00
+
+addYears(-1, new Date('December 17, 1995 03:24:00'))
+// Sat, 17 Dec 1994 09:24:00
+
+addYears(1)(new Date('December 17, 1995 03:24:00'))
+// Tue, 17 Dec 1996 09:24:00
+```
+
+### diffDate(firstDate, secondDate)
+
+Calculate the diff of two Date objects.
+
+**Parameters**
+
+- `firstDate` **[Date][Date]** to be compared.
+- `secondDate` **[Date][Date]** to be compared.
+
+**Returns**
+
+**[Date][Date]** with the years added.
+
+**Examples**
+
+```javascript
+import {diffDate} from 'vanilla-commons'
+
+diffDate(
+  new Date('December 17, 1995 03:24:00'),
+  new Date('December 17, 1996 03:25:00')
+)
+// {
+//   milliseconds: 31622460000,
+//   seconds: 31622460,
+//   minutes: 527041,
+//   hours: 8784.02,
+//   days: 366,
+//   weeks: 52.29,
+//   months: 12.2,
+//   years: 1
+// }
+```
+
+### formatDate(format, date)
+
+Format a date given a expected format.
+Use the following patterns inside your format:
+
+- `{YYYY}`: full year; **2017**
+- `{YY}`: short year; **17**
+- `{MM}`: month; **04**
+- `{DD}`: day; **01**
+- `{HH}`: hours; **06** (24h)
+- `{mm}`: minutes; **59**
+- `{ss}`: seconds; **09**
+
+**Parameters**
+
+- `format` **[string][string]** expected format of the date.
+- `date` **[Date][Date]** to be compared.
+
+**Returns**
+
+**[string][string]** formatted date.
+
+**Examples**
+
+```javascript
+import {formatDate} from 'vanilla-commons'
+
+formatDate(
+  '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}',
+  new Date('December 17, 1995 03:24:00')
+)
+// '17/12/1995 03:24:00'
+```
+
+### isValidDate(format, dateStr)
+
+Checks the validity of a given date string.
+Use the following patterns inside your format:
+
+- `{YYYY}`: full year; **2017**
+- `{YY}`: short year; **17**
+- `{MM}`: month; **04**
+- `{DD}`: day; **01**
+- `{HH}`: hours; **06** (24h)
+- `{mm}`: minutes; **59**
+- `{ss}`: seconds; **09**
+
+**Parameters**
+
+- `format` **[string][string]** expected format of the date.
+- `dateStr` **[string][string]** date string to be tested.
+
+**Returns**
+
+**[string][string]** formatted date.
+
+**Examples**
+
+```javascript
+import {isValidDate} from 'vanilla-commons'
+
+isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
+// true
+
+isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '29/02/1995 03:24:00')
+// false
+```
+
+### parseDate(format, dateStr)
+
+Parse a date string to a date object given a format.
+Use the following patterns inside your format:
+
+- `{YYYY}`: full year; **2017**
+- `{YY}`: short year; **17**
+- `{MM}`: month; **04**
+- `{DD}`: day; **01**
+- `{HH}`: hours; **06** (24h)
+- `{mm}`: minutes; **59**
+- `{ss}`: seconds; **09**
+
+**Parameters**
+
+- `format` **[string][string]** the format of the date string.
+- `dateStr` **[string][string]** date string to be parsed.
+
+**Returns**
+
+**[Date][Date]** formatted date.
+
+**Examples**
+
+```javascript
+import {parseDate} from 'vanilla-commons'
+
+parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
+// Sun, 17 Dec 1995 03:24:00
+```
+
+<!-- ## API
+
+### addClass(newClass, element)
 
 Add a class to a DOM Element.
 
 **Parameters**
 
--   `newClass` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Array or string of class to add to a DOM Element.
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to apply the changes.
+- `newClass` **([Array][Array] \| [string][string])** Array or string of class to add to a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
+
+**Returns**
+
+**[Element][Element]** in which the changes were made.
 
 **Examples**
 
@@ -127,280 +480,6 @@ const element = document.querySelector('.element')
 addClass(['hey', 'there'], element)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that the changes were made.
-
-### addDays
-
-Add days to a Date.
-
-**Parameters**
-
--   `days` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of days to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addDays} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addDays(6, date)
-```
-
-```javascript
-import {addDays} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addDays(-6, date)
-```
-
-```javascript
-import {addDays} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addDays(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the days added.
-
-### addHours
-
-Add hours to a Date.
-
-**Parameters**
-
--   `hours` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of hours to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addHours} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addHours(6, date)
-```
-
-```javascript
-import {addHours} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addHours(-6, date)
-```
-
-```javascript
-import {addHours} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addHours(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the hours added.
-
-### addMilliseconds
-
-Add milliseconds to a Date.
-
-**Parameters**
-
--   `milliseconds` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of milliseconds to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addMilliseconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMilliseconds(6, date)
-```
-
-```javascript
-import {addMilliseconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMilliseconds(-6, date)
-```
-
-```javascript
-import {addMilliseconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMilliseconds(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the milliseconds added.
-
-### addMinutes
-
-Add minutes to a Date.
-
-**Parameters**
-
--   `minutes` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of minutes to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addMinutes} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMinutes(6, date)
-```
-
-```javascript
-import {addMinutes} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMinutes(-6, date)
-```
-
-```javascript
-import {addMinutes} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMinutes(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the minutes added.
-
-### addMonths
-
-Add months to a Date.
-
-**Parameters**
-
--   `months` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of months to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addMonths} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMonths(6, date)
-```
-
-```javascript
-import {addMonths} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMonths(-6, date)
-```
-
-```javascript
-import {addMonths} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addMonths(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the months added.
-
-### addSeconds
-
-Add seconds to a Date.
-
-**Parameters**
-
--   `seconds` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of seconds to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addSeconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addSeconds(6, date)
-```
-
-```javascript
-import {addSeconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addSeconds(-6, date)
-```
-
-```javascript
-import {addSeconds} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addSeconds(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the seconds added.
-
-### addWeeks
-
-Add weeks to a Date.
-
-**Parameters**
-
--   `weeks` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of weeks to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addWeeks} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addWeeks(6, date)
-```
-
-```javascript
-import {addWeeks} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addWeeks(-6, date)
-```
-
-```javascript
-import {addWeeks} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addWeeks(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the weeks added.
-
-### addYears
-
-Add years to a Date.
-
-**Parameters**
-
--   `years` **[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** Number of years to add.
--   `element` **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Date)** Date to be modified.
-
-**Examples**
-
-```javascript
-import {addYears} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addYears(6, date)
-```
-
-```javascript
-import {addYears} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addYears(-6, date)
-```
-
-```javascript
-import {addYears} from 'vanilla-commons'
-
-const date = new Date('December 17, 1995 03:24:00')
-const finalDate = addYears(6)(date)
-```
-
-Returns a **[Date](https://developer.mozilla.org/en-US/docs/Web/API/Element)** with the years added.
-
 ### capitalize
 
 Converts the first character of string to upper case and the remaining to lower case.
@@ -413,7 +492,7 @@ Remove all the event listeners of a element and its children.
 
 **Parameters**
 
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element that will have its events removed.
+- `element` **[Element][Element]** Element that will have its events removed.
 
 **Examples**
 
@@ -421,30 +500,10 @@ Remove all the event listeners of a element and its children.
 clearEvents(element)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that the events were removed.
+Returns **[Element][Element]** element that the events were removed.
 
 ### compose
 ### curry
-### diffDate
-
-### flattenArray
-
-Flatten nested arrays.
-
-**Parameters**
-
-- `arr` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** Nested array.
-
-**Examples**
-
-```javascript
-// returns [1, 2, 3, 4]
-flattenArray([[1], [2, [3, 4]]])
-```
-
-Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** flattened.
-
-### formatDate
 
 ### getParents
 
@@ -452,7 +511,7 @@ Get all the parents of a given element.
 
 **Parameters**
 
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Reference element.
+- `element` **[Element][Element]** Reference element.
 
 **Examples**
 
@@ -460,7 +519,7 @@ Get all the parents of a given element.
 getParents(element)
 ```
 
-Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** the parents of teh element, including the body.
+Returns **[Array][Array]** the parents of teh element, including the body.
 
 ### hasClass
 
@@ -468,8 +527,8 @@ Check if a DOM Element has the specified class.
 
 **Parameters**
 
--   `classToCheck` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Array or string of class to check the existence in a DOM Element.
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to apply the changes.
+- `classToCheck` **([Array][Array] \| [string][string])** Array or string of class to check the existence in a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
 
 **Examples**
 
@@ -485,7 +544,7 @@ hasClass('hey', element)
 hasClass(['hey', 'there'], element)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that the changes were made.
+Returns **[Element][Element]** element that the changes were made.
 
 ### hideElement
 
@@ -493,7 +552,7 @@ Hide a Element from the DOM.
 
 **Parameters**
 
--   `elementsToHide` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element))** Array of elements or element to hide.
+- `elementsToHide` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
 
 **Examples**
 
@@ -505,7 +564,7 @@ hideElement(element)
 hideElement([element1, element2])
 ```
 
-Returns **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element))** element or array of elements that were hidden.
+Returns **([Array][Array] \| [Element][Element])** element or array of elements that were hidden.
 
 ### insertElementAfter
 
@@ -513,8 +572,8 @@ Insert a element after a reference element.
 
 **Parameters**
 
--   `referenceElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Reference element.
--   `newElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to be inserted.
+- `referenceElement` **[Element][Element]** Reference element.
+- `newElement` **[Element][Element]** Element to be inserted.
 
 **Examples**
 
@@ -522,7 +581,7 @@ Insert a element after a reference element.
 insertElementAfter(referenceElement, newElement)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that were inserted.
+Returns **[Element][Element]** element that were inserted.
 
 ### insertElementBefore
 
@@ -530,8 +589,8 @@ Insert a element before a reference element.
 
 **Parameters**
 
--   `referenceElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Reference element.
--   `newElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to be inserted.
+- `referenceElement` **[Element][Element]** Reference element.
+- `newElement` **[Element][Element]** Element to be inserted.
 
 **Examples**
 
@@ -539,9 +598,7 @@ Insert a element before a reference element.
 insertElementBefore(referenceElement, newElement)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that were inserted.
-
-### isValidDate
+Returns **[Element][Element]** element that were inserted.
 
 ### killElement
 
@@ -549,7 +606,7 @@ Kill a Element from the DOM.
 
 **Parameters**
 
--   `elementsToKill` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element))** Array of elements or element to kill.
+- `elementsToKill` **([Array][Array] \| [Element][Element])** Array of elements or element to kill.
 
 **Examples**
 
@@ -563,7 +620,7 @@ killElement([element1, element2])
 
 ### mapKeys
 ### mapValues
-### parseDate
+
 ### pipe
 
 ### removeClass
@@ -572,8 +629,8 @@ Remove a class of a DOM Element.
 
 **Parameters**
 
--   `classToRemove` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Array or string of class to remove of a DOM Element.
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to apply the changes.
+- `classToRemove` **([Array][Array] \| [string][string])** Array or string of class to remove of a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
 
 **Examples**
 
@@ -589,7 +646,7 @@ removeClass('hey', element)
 removeClass(['hey', 'there'], element)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that the changes were made.
+Returns **[Element][Element]** element that the changes were made.
 
 ### replaceElement
 
@@ -597,8 +654,8 @@ Replace a DOM element with another element.
 
 **Parameters**
 
--   `originalElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to be replaced.
--   `newElement` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** New element to replace the old one.
+- `originalElement` **[Element][Element]** Element to be replaced.
+- `newElement` **[Element][Element]** New element to replace the old one.
 
 **Examples**
 
@@ -606,7 +663,7 @@ Replace a DOM element with another element.
 replaceElement(originalElement, newElement)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that replaced the old one.
+Returns **[Element][Element]** element that replaced the old one.
 
 ### round
 
@@ -616,7 +673,7 @@ Show a hidden Element from the DOM.
 
 **Parameters**
 
--   `elementsToShow` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element))** Array of elements or element to hide.
+- `elementsToShow` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
 
 **Examples**
 
@@ -628,7 +685,7 @@ showElement(element)
 showElement([element1, element2])
 ```
 
-Returns **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element))** element or array of elements that were showed.
+Returns **([Array][Array] \| [Element][Element])** element or array of elements that were showed.
 
 ### throttle
 
@@ -638,8 +695,8 @@ Toggle a class from a DOM Element.
 
 **Parameters**
 
--   `classToToggle` **([Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) \| [string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String))** Array or string of class to toggle a DOM Element.
--   `element` **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** Element to apply the changes.
+- `classToToggle` **([Array][Array] \| [string][string])** Array or string of class to toggle a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
 
 **Examples**
 
@@ -655,7 +712,7 @@ toggleClass('hey', element)
 toggleClass(['hey', 'there'], element)
 ```
 
-Returns **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** element that the changes were made.
+Returns **[Element][Element]** element that the changes were made. -->
 
 ## Contributing
 
@@ -664,3 +721,9 @@ See the [contributing file](CONTRIBUTING.md).
 ## License
 
 [MIT License](LICENSE.md) © [Thiago Santos](https://thiamsantos.github.io/)
+
+[Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+[Date]: https://developer.mozilla.org/en-US/docs/Web/API/Date
+[Element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
+[Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
+[string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
