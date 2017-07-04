@@ -62,3 +62,12 @@ Improving accessibility | :wheelchair: `:wheelchair:`
 Add new features | :sparkles: `:sparkles:`
 Refactoring | :package: `:package:`
 Other | [Be creative](http://www.emoji-cheat-sheet.com/)
+
+## Scripts
+The follow scripts are available when you develop.
+
+- `npm run lint` - Lint the files.
+- `npm test` - Run the tests.
+- `npm run test:watch` - Run the tests on the watch mode.
+- `npm run coverage` - See the code coverage of the tests.
+- `npm run build` - Build the package.
