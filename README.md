@@ -397,7 +397,7 @@ Use the following patterns inside your format:
 
 **Returns**
 
-**[string][string]** formatted date.
+**[Boolean][Boolean]** true if the date is valid.
 
 **Examples**
 
@@ -431,7 +431,7 @@ Use the following patterns inside your format:
 
 **Returns**
 
-**[Date][Date]** formatted date.
+**[Date][Date]** parsed date.
 
 **Examples**
 
@@ -723,6 +723,7 @@ See the [contributing file](CONTRIBUTING.md).
 [MIT License](LICENSE.md) © [Thiago Santos](https://thiamsantos.github.io/)
 
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+[Boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean
 [Date]: https://developer.mozilla.org/en-US/docs/Web/API/Date
 [Element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
 [Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
