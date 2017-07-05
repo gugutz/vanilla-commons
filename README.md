@@ -31,7 +31,7 @@ The [UMD](https://github.com/umdjs/umd) build is also available on [jsdelivr](ht
 <script src="https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js"></script>
 ```
 
-You can find the library on `window.vanillaCommons`.
+You can find the library on `window.commons`.
 
 ## Usage
 

@@ -13,7 +13,7 @@
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/**/*.js\"",
     "lint": "xo --fix",
     "pretest": "npm run lint",
-    "test": "jest --verbose",
+    "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",
     "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",

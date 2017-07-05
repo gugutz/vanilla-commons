@@ -3,7 +3,6 @@ const {rollup} = require('rollup')
 const babel = require('rollup-plugin-babel')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
-const multiEntry = require('rollup-plugin-multi-entry')
 const filesize = require('rollup-plugin-filesize')
 const uglify = require('uglify-js')
 const fileSize = require('filesize')
@@ -11,7 +10,7 @@ const gzipSize = require('gzip-size')
 const boxen = require('boxen')
 const chalk = require('chalk')
 
-const entry = 'lib/*.js'
+const entry = 'lib/index.js'
 const targets = {
   cjs: 'dist/vanilla-commons.js',
   es: 'dist/vanilla-commons.es.js',
@@ -22,7 +21,6 @@ const targets = {
 const pkg = JSON.parse(readFileSync('./package.json'))
 const dependencies = Object.keys(pkg.dependencies || {})
 const plugins = [
-  multiEntry(),
   nodeResolve(),
   commonjs({
     include: 'node_modules/**'
@@ -86,7 +84,7 @@ const umdBuild = rollup({
   return bundle.write({
     dest: targets.umd,
     format: 'umd',
-    moduleName: 'vanillaCommons'
+    moduleName: 'commons'
   })
 })
 
