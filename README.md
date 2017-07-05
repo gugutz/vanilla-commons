@@ -448,6 +448,31 @@ parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
 
 ## Function Commons
 ## Number Commons
+
+## round(num)
+
+Round a number to two decimal places.
+
+**Parameters**
+
+- `num` **[Number][Number]** number to be rounded.
+
+**Returns**
+
+**[Number][Number]** rounded number.
+
+**Examples**
+
+```javascript
+import {round} from 'vanilla-commons'
+
+round(3.141592)
+// 3.14
+
+round(-27.817987)
+// -27.82
+```
+
 ## Object Commons
 ## String Commons
 
