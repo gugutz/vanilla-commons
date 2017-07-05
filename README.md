@@ -474,6 +474,67 @@ round(-27.817987)
 ```
 
 ## Object Commons
+
+### mapKeys(fn, obj)
+
+Map over the keys of a object.
+
+**Parameters**
+
+- `fn` **[Function][Function]** function that will be invoked per iteration.
+- `obj` **[Object][Object]** object to be mapped.
+
+**Returns**
+
+**[Object][Object]** mapped object.
+
+**Examples**
+
+```javascript
+import {mapKeys} from 'vanilla-commons'
+
+mapKeys(function(key) {
+  return key + 'hey'
+}, {
+  captain: 'picard',
+  firstOfficer: 'riker'
+})
+// {
+//   captainhey: 'picard',
+//   firstOfficerhey: 'riker'
+// }
+```
+
+### mapValues(fn, obj)
+
+Map over the values of a object.
+
+**Parameters**
+
+- `fn` **[Function][Function]** function that will be invoked per iteration.
+- `obj` **[Object][Object]** object to be mapped.
+
+**Returns**
+
+**[Object][Object]** mapped object.
+
+**Examples**
+
+```javascript
+import {mapValues} from 'vanilla-commons'
+
+mapValues(function(key) {
+  return key + 'hey'
+}, {
+  captain: 'picard',
+  firstOfficer: 'riker'
+})
+// {
+//   captain: 'picardhey',
+//   firstOfficer: 'rikerhey'
+// }
+```
+
 ## String Commons
 
 ### capitalize(str)
@@ -806,3 +867,4 @@ See the [contributing file](CONTRIBUTING.md).
 [Element]: https://developer.mozilla.org/en-US/docs/Web/API/Element
 [Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 [string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+[Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
