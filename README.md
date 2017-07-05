@@ -13,6 +13,10 @@
 - [Array Commons](#array-commons)
 - [Date Commons](#date-commons)
 - [Element Commons](#element-commons)
+- [Function Commons](#function-commons)
+- [Number Commons](#number-commons)
+- [Object Commons](#object-commons)
+- [String Commons](#string-commons)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -442,6 +446,55 @@ parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
 // Sun, 17 Dec 1995 03:24:00
 ```
 
+## Function Commons
+## Number Commons
+## Object Commons
+## String Commons
+
+### capitalize(str)
+
+Converts the first character of string to upper case.
+
+**Parameters**
+
+- `str` **[string][string]** string to be capitalized.
+
+**Returns**
+
+**[string][string]** capitalized string.
+
+**Examples**
+
+```javascript
+import {capitalize} from 'vanilla-commons'
+
+capitalize('vanilla')
+// Vanilla
+```
+
+### cleanUpString(str)
+
+Removes the all line breaks in the entire string and also the white spaces from the both ends of the string.
+
+**Parameters**
+
+- `str` **[string][string]** string to be cleaned.
+
+**Returns**
+
+**[string][string]** clean string.
+
+**Examples**
+
+```javascript
+import {cleanUpString} from 'vanilla-commons'
+
+cleanUpString('\n \n\r \r\n')
+// ''
+
+cleanUpString('\n \n\r hjhj ')
+// 'hjhj'
+```
 <!-- ## API
 
 ### addClass(newClass, element)
@@ -482,7 +535,7 @@ addClass(['hey', 'there'], element)
 
 ### capitalize
 
-Converts the first character of string to upper case and the remaining to lower case.
+
 
 ### cleanUpString
 
