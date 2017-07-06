@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://cdn.rawgit.com/thiamsantos/vanilla-commons/a4852858/logo.svg" width="200" alt="vanilla-commons">
+  <img src="https://cdn.rawgit.com/thiamsantos/vanilla-commons/42d60b80/logo.svg" width="200" alt="vanilla-commons">
 </h1>
 
 <p align="center">Lightweight common vanilla utilities for the modern web development</p>
