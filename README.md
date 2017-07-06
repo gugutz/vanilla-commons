@@ -445,11 +445,83 @@ import {parseDate} from 'vanilla-commons'
 parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
 // Sun, 17 Dec 1995 03:24:00
 ```
+## Element Commons
+
+### addClass(newClass, element)
+
+Add a class to a DOM Element.
+
+**Parameters**
+
+- `newClass` **([Array][Array] \| [string][string])** Array or string of class to add to a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
+
+**Returns**
+
+**[Element][Element]** in which the changes were made.
+
+**Examples**
+
+```javascript
+import {addClass} from 'vanilla-commons'
+
+const element = document.querySelector('.element')
+addClass('hey')(element)
+// <div class="element hey"></div>
+
+addClass(['there', 'man'], element)
+// <div class="element hey there man"></div>
+```
+
+### clearEvents(element)
+
+Remove all the event listeners of a element and its children.
+
+**Parameters**
+
+- `element` **[Element][Element]** Element that will have its events removed.
+
+**Returns**
+
+**[Element][Element]** element that the events were removed.
+
+**Examples**
+
+```javascript
+// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/clear-events.test.js
+import {clearEvents} from 'vanilla-commons'
+
+const element = document.querySelector('.element')
+clearEvents(element)
+```
+
+### getParents
+
+Get all the parents of a given element.
+
+**Parameters**
+
+- `element` **[Element][Element]** Reference element.
+
+**Returns**
+
+**[Array][Array]** the parents of the element, including the body.
+
+**Examples**
+
+```javascript
+// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/get-parents.test.js
+import {getParents} from 'vanilla-commons'
+
+const element = document.querySelector('.element')
+getParents(element)
+```
+
 
 ## Function Commons
 ## Number Commons
 
-## round(num)
+### round(num)
 
 Round a number to two decimal places.
 
@@ -583,82 +655,16 @@ cleanUpString('\n \n\r hjhj ')
 ```
 <!-- ## API
 
-### addClass(newClass, element)
-
-Add a class to a DOM Element.
-
-**Parameters**
-
-- `newClass` **([Array][Array] \| [string][string])** Array or string of class to add to a DOM Element.
-- `element` **[Element][Element]** Element to apply the changes.
-
-**Returns**
-
-**[Element][Element]** in which the changes were made.
-
-**Examples**
-
-```javascript
-import {addClass} from 'vanilla-commons'
-
-const element = document.querySelector('.element')
-addClass('hey')(element)
-```
-
-```javascript
-import {addClass} from 'vanilla-commons'
-
-const element = document.querySelector('.element')
-addClass('hey', element)
-```
-
-```javascript
-import {addClass} from 'vanilla-commons'
-
-const element = document.querySelector('.element')
-addClass(['hey', 'there'], element)
-```
-
 ### capitalize
 
 
 
 ### cleanUpString
 
-### clearEvents
 
-Remove all the event listeners of a element and its children.
-
-**Parameters**
-
-- `element` **[Element][Element]** Element that will have its events removed.
-
-**Examples**
-
-```javascript
-clearEvents(element)
-```
-
-Returns **[Element][Element]** element that the events were removed.
 
 ### compose
 ### curry
-
-### getParents
-
-Get all the parents of a given element.
-
-**Parameters**
-
-- `element` **[Element][Element]** Reference element.
-
-**Examples**
-
-```javascript
-getParents(element)
-```
-
-Returns **[Array][Array]** the parents of teh element, including the body.
 
 ### hasClass
 
