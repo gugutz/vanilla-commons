@@ -35,6 +35,22 @@ describe('throttle main functionality', () => {
 
     expect(callback.mock.calls.length).toBe(1)
   })
+
+  it('should pass the arguments through throttled function', () => {
+    const callback = jest.fn()
+
+    const throttled = throttle(200)(callback)
+    const arg = {
+      target: 'hey'
+    }
+
+    throttled(arg)
+
+    jest.runTimersToTime(200)
+
+    expect(callback.mock.calls.length).toBe(1)
+    expect(callback.mock.calls[0][0]).toBe(arg)
+  })
 })
 
 describe('throttle arguments validation errors', () => {
