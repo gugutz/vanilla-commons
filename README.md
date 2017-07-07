@@ -17,6 +17,7 @@
 - [Number Commons](#number-commons)
 - [Object Commons](#object-commons)
 - [String Commons](#string-commons)
+- [Prior Art](#prior-art)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -495,7 +496,7 @@ const element = document.querySelector('.element')
 clearEvents(element)
 ```
 
-### getParents
+### getParents(element)
 
 Get all the parents of a given element.
 
@@ -517,8 +518,351 @@ const element = document.querySelector('.element')
 getParents(element)
 ```
 
+### hasClass(classToCheck, element)
+
+Check if a DOM Element has the specified class.
+
+**Parameters**
+
+- `classToCheck` **([Array][Array] \| [string][string])** Array or string of class to check the existence in a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
+
+**Returns**
+
+**[Element][Element]** to check if has the specified class.
+
+**Examples**
+
+```javascript
+import {hasClass} from 'vanilla-commons'
+
+const element = document.createElement('div')
+element.className = 'hey there'
+
+hasClass('hey')(element)
+// true
+
+hasClass('hey', element)
+// true
+
+hasClass('man', element)
+// false
+
+hasClass(['hey', 'there'], element)
+// true
+
+hasClass(['hey', 'man'], element)
+// false
+```
+
+### hideElement(elementToHide)
+
+Hide a Element from the DOM.
+
+**Parameters**
+
+- `elementToHide` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
+
+**Returns**
+
+**([Array][Array] \| [Element][Element])** element or array of elements that were hidden.
+
+**Examples**
+
+```javascript
+import {hideElement} from 'vanilla-commons'
+
+const element = document.createElement('div')
+element.style.display
+// block
+
+hideElement(element)
+element.style.display
+// none
+```
+```javascript
+import {hideElement} from 'vanilla-commons'
+
+const element1 = document.createElement('div')
+element1.style.display
+// block
+
+const element2 = document.createElement('div')
+element2.style.display
+// block
+
+hideElement([element1, element2])
+
+element1.style.display
+// none
+
+element2.style.display
+// none
+```
+
+### insertElementAfter(referenceElement, newElement)
+
+Insert a element after a reference element.
+
+**Parameters**
+
+- `referenceElement` **[Element][Element]** Reference element.
+- `newElement` **[Element][Element]** Element to be inserted.
+
+**Returns**
+
+**[Element][Element]** that were inserted.
+
+**Examples**
+
+```javascript
+import {insertElementAfter} from 'vanilla-commons'
+
+insertElementAfter(referenceElement, newElement)
+```
+
+### insertElementBefore(referenceElement, newElement)
+
+Insert a element before a reference element.
+
+**Parameters**
+
+- `referenceElement` **[Element][Element]** Reference element.
+- `newElement` **[Element][Element]** Element to be inserted.
+
+**Returns**
+
+**[Element][Element]** that were inserted.
+
+**Examples**
+
+```javascript
+import {insertElementBefore} from 'vanilla-commons'
+
+insertElementBefore(referenceElement, newElement)
+```
+
+### killElement(elementToKill)
+
+Kill a Element from the DOM.
+
+**Parameters**
+
+- `elementToKill` **([Array][Array] \| [Element][Element])** Array of elements or element to kill.
+
+**Examples**
+
+```javascript
+import {killElement} from 'vanilla-commons'
+
+killElement(element)
+
+killElement([element1, element2])
+```
+
+### removeClass(classToRemove, element)
+
+Remove a class of a DOM Element.
+
+**Parameters**
+
+- `classToRemove` **([Array][Array] \| [string][string])** Array or string of class to remove of a DOM Element.
+- `element` **[Element][Element]** Element to apply the changes.
+
+**Returns**
+
+**[Element][Element]** that the had the class removed.
+
+**Examples**
+
+```javascript
+import {removeClass} from 'vanilla-commons'
+
+removeClass('hey')(element)
+
+removeClass('hey', element)
+
+removeClass(['hey', 'there'], element)
+```
+
+### replaceElement(originalElement, )newElement
+
+Replace a DOM element with another element.
+
+**Parameters**
+
+- `originalElement` **[Element][Element]** Element to be replaced.
+- `newElement` **[Element][Element]** New element to replace the old one.
+
+**Returns**
+
+**[Element][Element]** element that replaced the old one.
+
+**Examples**
+
+```javascript
+import {replaceElement} from 'vanilla-commons'
+
+replaceElement(originalElement, newElement)
+```
+
+### showElement(elementToShow)
+
+Show a hidden Element from the DOM.
+
+**Parameters**
+
+- `elementToShow` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
+
+**Returns**
+
+**([Array][Array] \| [Element][Element])** element or array of elements that were showed.
+
+**Examples**
+
+```javascript
+import {showElement} from 'vanilla-commons'
+
+showElement(element)
+
+showElement([element1, element2])
+```
+
+### toggleClass(classToToggle, element)
+
+Toggle a class from a DOM Element.
+
+**Parameters**
+
+- `classToToggle` **([Array][Array] \| [string][string])** Array or string of class to toggle a DOM Element.
+- `element` **[Element][Element]**  to apply the changes.
+
+**Returns**
+
+**[Element][Element]** that the changes were made.
+
+**Examples**
+
+```javascript
+import {toggleClass} from 'vanilla-commons'
+
+toggleClass('hey')(element)
+
+toggleClass('hey', element)
+
+toggleClass(['hey', 'there'], element)
+```
 
 ## Function Commons
+
+### compose(fn[, fn1, ..., fnN])
+
+Performs right-to-left function composition.
+
+**Parameters**
+
+- `fn`...`fnN` **[Function][Function]** functions to be composed.
+
+**Returns**
+
+- **[Function][Function]** composed function.
+
+**Examples**
+
+```javascript
+import {curry, compose} from 'vanilla-commons'
+
+const add = curry((a, b) => a + b)
+
+const multiply = curry((a, b) => a * b)
+
+const composedFunction = compose(add(5), multiply(4), add(3))
+composedFunction(2)
+// (((2 + 3) * 4) + 5) = 25
+```
+
+### curry(fn)
+
+Returns a curried equivalent of the provided function
+
+**Parameters**
+
+- `fn` **[Function][Function]** function to be curried.
+
+**Returns**
+
+- **[Function][Function]** curried function.
+
+**Examples**
+
+```javascript
+import {curry} from 'vanilla-commons'
+
+const addFourNumbers = (a, b, c, d) => a + b + c + d
+
+const curriedAddFourNumbers = curry(addFourNumbers)
+curriedAddFourNumbers(1, 2)(3)(4)
+// 10
+
+curriedAddFourNumbers(1, 2)(3, 4)
+// 10
+
+curriedAddFourNumbers(1)(2)(3)(4)
+// 10
+
+curriedAddFourNumbers(1, 2, 3)(4)
+// 10
+```
+
+### pipe(fn[, fn1, ..., fnN])
+
+Performs left-to-right function composition.
+
+**Parameters**
+
+- `fn`...`fnN` **[Function][Function]** functions to be piped.
+
+**Returns**
+
+- **[Function][Function]** piped function.
+
+**Examples**
+
+```javascript
+import {curry, pipe} from 'vanilla-commons'
+
+const add = curry((a, b) => a + b)
+
+const multiply = curry((a, b) => a * b)
+
+const pipedFunction = pipe(add(5), multiply(4), add(3))
+pipedFunction(2)
+// (((2 + 5) * 4) + 3) = 31
+```
+
+### throttle(limit, fn)
+
+Creates a function that will call fn at most once every wait milliseconds.
+
+**Parameters**
+
+- `limit` **[Number][Number]** time in milliseconds to wait.
+- `fn` **[Function][Function]** function to be executed.
+
+**Returns**
+
+- **[Function][Function]** throttled function.
+
+**Examples**
+
+```javascript
+import {throttle} from 'vanilla-commons'
+
+window.addEventListener('scroll', throttle(100, e => {
+  console.log(e)
+}))
+```
+
 ## Number Commons
 
 ### round(num)
@@ -653,211 +997,19 @@ cleanUpString('\n \n\r \r\n')
 cleanUpString('\n \n\r hjhj ')
 // 'hjhj'
 ```
-<!-- ## API
 
-### capitalize
-
-
-
-### cleanUpString
-
-
-
-### compose
-### curry
-
-### hasClass
-
-Check if a DOM Element has the specified class.
-
-**Parameters**
-
-- `classToCheck` **([Array][Array] \| [string][string])** Array or string of class to check the existence in a DOM Element.
-- `element` **[Element][Element]** Element to apply the changes.
-
-**Examples**
-
-```javascript
-hasClass('hey')(element)
-```
-
-```javascript
-hasClass('hey', element)
-```
-
-```javascript
-hasClass(['hey', 'there'], element)
-```
-
-Returns **[Element][Element]** element that the changes were made.
-
-### hideElement
-
-Hide a Element from the DOM.
-
-**Parameters**
-
-- `elementsToHide` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
-
-**Examples**
-
-```javascript
-hideElement(element)
-```
-
-```javascript
-hideElement([element1, element2])
-```
-
-Returns **([Array][Array] \| [Element][Element])** element or array of elements that were hidden.
-
-### insertElementAfter
-
-Insert a element after a reference element.
-
-**Parameters**
-
-- `referenceElement` **[Element][Element]** Reference element.
-- `newElement` **[Element][Element]** Element to be inserted.
-
-**Examples**
-
-```javascript
-insertElementAfter(referenceElement, newElement)
-```
-
-Returns **[Element][Element]** element that were inserted.
-
-### insertElementBefore
-
-Insert a element before a reference element.
-
-**Parameters**
-
-- `referenceElement` **[Element][Element]** Reference element.
-- `newElement` **[Element][Element]** Element to be inserted.
-
-**Examples**
-
-```javascript
-insertElementBefore(referenceElement, newElement)
-```
-
-Returns **[Element][Element]** element that were inserted.
-
-### killElement
-
-Kill a Element from the DOM.
-
-**Parameters**
-
-- `elementsToKill` **([Array][Array] \| [Element][Element])** Array of elements or element to kill.
-
-**Examples**
-
-```javascript
-killElement(element)
-```
-
-```javascript
-killElement([element1, element2])
-```
-
-### mapKeys
-### mapValues
-
-### pipe
-
-### removeClass
-
-Remove a class of a DOM Element.
-
-**Parameters**
-
-- `classToRemove` **([Array][Array] \| [string][string])** Array or string of class to remove of a DOM Element.
-- `element` **[Element][Element]** Element to apply the changes.
-
-**Examples**
-
-```javascript
-removeClass('hey')(element)
-```
-
-```javascript
-removeClass('hey', element)
-```
-
-```javascript
-removeClass(['hey', 'there'], element)
-```
-
-Returns **[Element][Element]** element that the changes were made.
-
-### replaceElement
-
-Replace a DOM element with another element.
-
-**Parameters**
-
-- `originalElement` **[Element][Element]** Element to be replaced.
-- `newElement` **[Element][Element]** New element to replace the old one.
-
-**Examples**
-
-```javascript
-replaceElement(originalElement, newElement)
-```
-
-Returns **[Element][Element]** element that replaced the old one.
-
-### round
-
-### showElement
-
-Show a hidden Element from the DOM.
-
-**Parameters**
-
-- `elementsToShow` **([Array][Array] \| [Element][Element])** Array of elements or element to hide.
-
-**Examples**
-
-```javascript
-showElement(element)
-```
-
-```javascript
-showElement([element1, element2])
-```
-
-Returns **([Array][Array] \| [Element][Element])** element or array of elements that were showed.
-
-### throttle
-
-### toggleClass
-
-Toggle a class from a DOM Element.
-
-**Parameters**
-
-- `classToToggle` **([Array][Array] \| [string][string])** Array or string of class to toggle a DOM Element.
-- `element` **[Element][Element]** Element to apply the changes.
-
-**Examples**
-
-```javascript
-toggleClass('hey')(element)
-```
-
-```javascript
-toggleClass('hey', element)
-```
-
-```javascript
-toggleClass(['hey', 'there'], element)
-```
-
-Returns **[Element][Element]** element that the changes were made. -->
+## Prior Art
+
+Vanilla Commons is fully inspired by these projects:
+
+- [Lodash](https://lodash.com/)
+- [Underscore.js](http://underscorejs.org/)
+- [Pareto.js](https://github.com/concretesolutions/pareto.js)
+- [Ramda](http://ramdajs.com/)
+- [tinydate](https://github.com/lukeed/tinydate)
+- [date-fns](https://date-fns.org/)
+- [Moment.js](https://momentjs.com/)
+- [jQuery](http://jquery.com/)
 
 ## Contributing
 
