@@ -16,6 +16,14 @@ describe('formatDate main functionality', () => {
     const expected = '17/12/1995 03:24:00'
     expect(actual).toBe(expected)
   })
+
+  it('should work with short year', () => {
+    const date = new Date('December 17, 2017 03:24:00')
+    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}'
+    const actual = formatDate(format)(date)
+    const expected = '17/12/17 03:24:00'
+    expect(actual).toBe(expected)
+  })
 })
 
 describe('formatDate arguments validation errors', () => {
