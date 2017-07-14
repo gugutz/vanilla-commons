@@ -85,5 +85,8 @@
     },
     "space": true,
     "semicolon": false
+  },
+  "dependencies": {
+    "is-boolean-attribute": "0.0.1"
   }
 }

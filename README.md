@@ -1010,6 +1010,8 @@ Vanilla Commons is fully inspired by these projects:
 - [date-fns](https://date-fns.org/)
 - [Moment.js](https://momentjs.com/)
 - [jQuery](http://jquery.com/)
+- [dom-create-element-query-selector](https://github.com/hekigan/dom-create-element-query-selector)
+- [hyperscript](https://github.com/hyperhype/hyperscript)
 
 ## Contributing
 
