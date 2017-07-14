@@ -166,13 +166,13 @@ describe('createElement main functionality', () => {
   })
 
   it('should innerHTML the string passed', () => {
-    const actual = createElement('div', {
-      inner: '<br/>'
-    }, [
-      createElement('input'),
-      'hey',
-      createElement('img')
-    ])
+    const actual = createElement(
+      'div',
+      {
+        inner: '<br/>'
+      },
+      [createElement('input'), 'hey', createElement('img')]
+    )
 
     const expected = document.createElement('div')
     expected.appendChild(document.createElement('br'))

@@ -496,6 +496,64 @@ const element = document.querySelector('.element')
 clearEvents(element)
 ```
 
+### createElement(selector, props, children)
+
+Create a DOM element.
+
+**Parameters**
+
+- `selector` **[string][string]** CSS selector like.
+- `props` **[Object][Element]** Properties of the node.
+- `children` (**[string][string]**|**[Element][Element]**|**[Array][Array]**) Children of the element.
+
+**Returns**
+
+**[Element][Element]** created.
+
+**Examples**
+
+```javascript
+// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/create-element.test.js
+import {createElement} from 'vanilla-commons'
+
+createElement()
+// <div></div>
+
+createElement('input#id.class[type=text][required]')
+// <input id="id" class="class" type="text" disabled required/>
+
+createElement('div', {
+  data: {
+    ref: 'hey',
+    error: 'bad'
+  }
+})
+// <div data-ref="hey" data-error="bad"></div>
+
+createElement('p', {
+  className: 'hey there man'
+})
+// <p class="hey there man"></p>
+
+createElement('p', {
+  onclick: function() {
+    console.log('clicked')
+  }
+})
+// It's easy to work with events!
+
+createElement('div', {}, [
+  createElement('input[type=text]'),
+  'hey',
+  createElement('img[src=coolimage.jpg]')
+])
+// <div>
+//   <input type=""/>
+//   hey
+//   <img src="coolimage.jpg"/>
+// </div>
+```
+
 ### getParents(element)
 
 Get all the parents of a given element.
@@ -1028,3 +1086,4 @@ See the [contributing file](CONTRIBUTING.md).
 [Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number
 [string]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [Function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function
+[Object]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
