@@ -1,14 +1,10 @@
-const {readFileSync, writeFileSync} = require('fs')
+const {readFileSync} = require('fs')
 const {rollup} = require('rollup')
 const babel = require('rollup-plugin-babel')
 const commonjs = require('rollup-plugin-commonjs')
 const nodeResolve = require('rollup-plugin-node-resolve')
 const filesize = require('rollup-plugin-filesize')
-const uglify = require('uglify-js')
-const fileSize = require('filesize')
-const gzipSize = require('gzip-size')
-const boxen = require('boxen')
-const chalk = require('chalk')
+const uglify = require('rollup-plugin-uglify')
 
 const entry = 'lib/index.js'
 const targets = {
@@ -20,7 +16,8 @@ const targets = {
 
 const pkg = JSON.parse(readFileSync('./package.json'))
 const dependencies = Object.keys(pkg.dependencies || {})
-const plugins = [
+
+const defaultPlugins = [
   nodeResolve(),
   commonjs({
     include: 'node_modules/**'
@@ -41,66 +38,34 @@ const plugins = [
   filesize()
 ]
 
-const logFileSize = (dest, sizes) => {
-  const primaryColor = 'green'
-  const secondaryColor = 'yellow'
+async function build(format) {
+  const plugins =
+    format === 'min' ? defaultPlugins.concat(uglify()) : defaultPlugins
 
-  console.log(
-    boxen(
-      chalk[primaryColor].bold('Destination: ') +
-        chalk[secondaryColor](dest) +
-        '\n' +
-        chalk[primaryColor].bold('Bundle size: ') +
-        chalk[secondaryColor](sizes.normal) +
-        ', ' +
-        chalk[primaryColor].bold('Gzipped size: ') +
-        chalk[secondaryColor](sizes.gzip),
-      {padding: 1}
-    )
-  )
-}
+  const basicConfig = {
+    entry,
+    plugins
+  }
 
-const mainBuild = rollup({
-  entry,
-  external: dependencies,
-  plugins
-}).then(bundle => {
-  return Promise.all([
-    bundle.write({
-      dest: targets.cjs,
-      format: 'cjs'
-    }),
-    bundle.write({
-      dest: targets.es,
-      format: 'es'
-    })
-  ])
-})
+  const customConfig = ['cjs', 'es'].includes(format) ?
+    {external: dependencies} :
+    {}
 
-const umdBuild = rollup({
-  entry,
-  plugins
-}).then(bundle => {
+  const bundle = await rollup(Object.assign(basicConfig, customConfig))
+
   return bundle.write({
-    dest: targets.umd,
-    format: 'umd',
+    dest: targets[format],
+    format: format === 'min' ? 'umd' : format,
     moduleName: 'commons'
   })
-})
+}
 
-Promise.all([mainBuild, umdBuild])
-  .then(() => {
-    const umdBundle = readFileSync(targets.umd, 'utf-8')
-    const result = uglify.minify(umdBundle)
+async function run() {
+  try {
+    await Promise.all(Object.keys(targets).map(build))
+  } catch (err) {
+    console.error(err)
+  }
+}
 
-    if (result.error) {
-      throw result.error
-    }
-
-    writeFileSync(targets.min, result.code, 'utf-8')
-    logFileSize(targets.min, {
-      normal: fileSize(Buffer.byteLength(result.code)),
-      gzip: fileSize(gzipSize.sync(result.code))
-    })
-  })
-  .catch(console.error)
+run()
