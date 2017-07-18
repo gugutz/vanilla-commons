@@ -6,7 +6,7 @@ These are just guidelines, not rules.
 Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Code of Conduct
-This project is released with a [Contributor Code of Conduct](code-of-conduct.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## Reporting Issues
 Found a problem? Want a new feature? First of all see if your issue or idea has [already been reported](https://github.com/thiamsantos/vanilla-commons/issues).
