@@ -7,7 +7,8 @@
   "jsnext:main": "dist/vanilla-commons.es.js",
   "browser": "dist/vanilla-commons.umd.js",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "prelint": "prettier --single-quote --no-semi --no-bracket-spacing --trailing-comma none --write \"lib/**/*.js\" --write build.js --write \"test/**/*.js\"",
@@ -87,5 +88,6 @@
   },
   "lint-staged": {
     "*.js": ["npm run lint", "git add"]
-  }
+  },
+  "types": "./index.d.ts"
 }

@@ -506,7 +506,7 @@ Create a DOM element.
 **Parameters**
 
 - `selector` **[string][string]** CSS selector like.
-- `props` **[Object][Element]** Properties of the node.
+- `props` **[Object][Object]** Properties of the node.
 - `children` (**[string][string]**|**[Element][Element]**|**[Array][Array]**) Children of the element.
 
 **Returns**
@@ -746,7 +746,7 @@ removeClass('hey', element)
 removeClass(['hey', 'there'], element)
 ```
 
-### replaceElement(originalElement, )newElement
+### replaceElement(originalElement, newElement)
 
 Replace a DOM element with another element.
 
@@ -1000,8 +1000,8 @@ Map over the values of a object.
 ```javascript
 import {mapValues} from 'vanilla-commons'
 
-mapValues(function(key) {
-  return key + 'hey'
+mapValues(function(value) {
+  return value + 'hey'
 }, {
   captain: 'picard',
   firstOfficer: 'riker'
