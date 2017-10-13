@@ -3,7 +3,7 @@ import parseDate from '../../lib/date/parse-date'
 describe('parseDate main functionality', () => {
   it('should parse a date', () => {
     const dateStr = '17/12/1995 03:24:00'
-    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}'
     const actual = parseDate(format, dateStr)
     const expected = new Date('December 17, 1995 03:24:00')
     expect(actual).toEqual(expected)
@@ -11,7 +11,7 @@ describe('parseDate main functionality', () => {
 
   it('should be curried', () => {
     const dateStr = '17/12/1995 03:24:00'
-    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}'
     const actual = parseDate(format)(dateStr)
     const expected = new Date('December 17, 1995 03:24:00')
     expect(actual).toEqual(expected)
@@ -19,7 +19,7 @@ describe('parseDate main functionality', () => {
 
   it('should handle short year formats of 20th century', () => {
     const dateStr = '17/12/89 03:24:00'
-    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}:{ms}'
     const actual = parseDate(format)(dateStr)
     const expected = new Date('December 17, 1989 03:24:00')
     expect(actual).toEqual(expected)
@@ -27,7 +27,7 @@ describe('parseDate main functionality', () => {
 
   it('should handle short year formats of 21st century', () => {
     const dateStr = '17/12/17 03:24:00'
-    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}:{ms}'
     const actual = parseDate(format)(dateStr)
     const expected = new Date('December 17, 2017 03:24:00')
     expect(actual).toEqual(expected)

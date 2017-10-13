@@ -3,25 +3,25 @@ import formatDate from '../../lib/date/format-date'
 describe('formatDate main functionality', () => {
   it('should format a date', () => {
     const date = new Date('December 17, 1995 03:24:00')
-    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}'
     const actual = formatDate(format, date)
-    const expected = '17/12/1995 03:24:00'
+    const expected = '17/12/1995 03:24:00:00'
     expect(actual).toBe(expected)
   })
 
   it('should be curried', () => {
     const date = new Date('December 17, 1995 03:24:00')
-    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}'
     const actual = formatDate(format)(date)
-    const expected = '17/12/1995 03:24:00'
+    const expected = '17/12/1995 03:24:00:00'
     expect(actual).toBe(expected)
   })
 
   it('should work with short year', () => {
     const date = new Date('December 17, 2017 03:24:00')
-    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}'
+    const format = '{DD}/{MM}/{YY} {HH}:{mm}:{ss}:{ms}'
     const actual = formatDate(format)(date)
-    const expected = '17/12/17 03:24:00'
+    const expected = '17/12/17 03:24:00:00'
     expect(actual).toBe(expected)
   })
 })

@@ -55,7 +55,7 @@ async function generateBundle(format) {
     {external: await getDependencies()} :
     {}
 
-  return  rollup(Object.assign(basicConfig, customConfig))
+  return rollup(Object.assign(basicConfig, customConfig))
 }
 
 function writeBundle(bundle, format) {
@@ -87,11 +87,7 @@ async function buildMin() {
 
 async function run() {
   try {
-    Promise.all([
-      buildGeneral(),
-      buildUmd(),
-      buildMin()
-    ])
+    Promise.all([buildGeneral(), buildUmd(), buildMin()])
   } catch (err) {
     console.error(err)
   }

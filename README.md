@@ -52,7 +52,7 @@ import {
 } from 'vanilla-commons'
 
 const date = new Date('December 17, 1995 03:24:00')
-const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}'
+const format = '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}'
 
 const finalDate = pipe(
   addMinutes(1),
@@ -62,7 +62,7 @@ const finalDate = pipe(
   addYears(-2),
   formatDate(format)
 )(date)
-// '24/03/1993 12:25:00'
+// '24/03/1993 12:25:00:00'
 ```
 
 ## Array Commons
@@ -360,6 +360,7 @@ Use the following patterns inside your format:
 - `{HH}`: hours; **06** (24h)
 - `{mm}`: minutes; **59**
 - `{ss}`: seconds; **09**
+- `{ms}`: milliseconds; **10**
 
 **Parameters**
 
@@ -376,10 +377,10 @@ Use the following patterns inside your format:
 import {formatDate} from 'vanilla-commons'
 
 formatDate(
-  '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}',
+  '{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}',
   new Date('December 17, 1995 03:24:00')
 )
-// '17/12/1995 03:24:00'
+// '17/12/1995 03:24:00:00'
 ```
 
 ### isValidDate(format, dateStr)
@@ -394,6 +395,7 @@ Use the following patterns inside your format:
 - `{HH}`: hours; **06** (24h)
 - `{mm}`: minutes; **59**
 - `{ss}`: seconds; **09**
+- `{ms}`: milliseconds; **10**
 
 **Parameters**
 
@@ -409,10 +411,10 @@ Use the following patterns inside your format:
 ```javascript
 import {isValidDate} from 'vanilla-commons'
 
-isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
+isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}', '17/12/1995 03:24:00:00')
 // true
 
-isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '29/02/1995 03:24:00')
+isValidDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}', '29/02/1995 03:24:00:00')
 // false
 ```
 
@@ -428,6 +430,7 @@ Use the following patterns inside your format:
 - `{HH}`: hours; **06** (24h)
 - `{mm}`: minutes; **59**
 - `{ss}`: seconds; **09**
+- `{ms}`: milliseconds; **10**
 
 **Parameters**
 
@@ -443,7 +446,7 @@ Use the following patterns inside your format:
 ```javascript
 import {parseDate} from 'vanilla-commons'
 
-parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}', '17/12/1995 03:24:00')
+parseDate('{DD}/{MM}/{YYYY} {HH}:{mm}:{ss}:{ms}', '17/12/1995 03:24:00:00')
 // Sun, 17 Dec 1995 03:24:00
 ```
 ## Element Commons
