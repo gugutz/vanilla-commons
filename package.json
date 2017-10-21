@@ -1,6 +1,6 @@
 {
   "name": "vanilla-commons",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Lightweight common vanilla utilities for the modern web development",
   "main": "dist/vanilla-commons.js",
   "module": "dist/vanilla-commons.es.js",
