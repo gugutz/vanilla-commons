@@ -55,9 +55,9 @@ declare namespace commons {
   function addClass(newClass: string | string[], element: HTMLElement): HTMLElement;
   function addClass(newClass: string | string[]): (element: HTMLElement) => HTMLElement;
 
-
   function clearEvents(element: HTMLElement): HTMLElement;
 
+  function createElement(selector?: string, children?: any[]): HTMLElement;
   function createElement(selector?: string, props?: any, children?: any[]): HTMLElement;
 
   function getParents(element: HTMLElement): HTMLElement[];

@@ -499,7 +499,7 @@ const element = document.querySelector('.element')
 clearEvents(element)
 ```
 
-### createElement(selector, props, children)
+### createElement(selector?, props?, children?)
 
 Create a DOM element.
 
@@ -545,7 +545,7 @@ createElement('p', {
 })
 // It's easy to work with events!
 
-createElement('div', {}, [
+createElement('div', [
   createElement('input[type=text]'),
   'hey',
   createElement('img[src=coolimage.jpg]')

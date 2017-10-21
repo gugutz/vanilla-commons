@@ -184,6 +184,43 @@ describe('createElement main functionality', () => {
   })
 })
 
+describe('createElement method overloading', () => {
+  it('should accept text as second argument', () => {
+    const actual = createElement('div', 'hey')
+    const expected = document.createElement('div')
+    expected.textContent = 'hey'
+
+    expect(actual).toEqual(expected)
+  })
+
+  it('should accept an element as second argument', () => {
+    const actual = createElement('div', document.createElement('h1'))
+    const expected = document.createElement('div')
+    expected.appendChild(document.createElement('h1'))
+
+    expect(actual).toEqual(expected)
+  })
+
+  it('should accept children as second argument', () => {
+    const actual = createElement('div', [
+      document.createElement('h1'),
+      document.createElement('h2')
+    ])
+    const expected = document.createElement('div')
+    expected.appendChild(document.createElement('h1'))
+    expected.appendChild(document.createElement('h2'))
+
+    expect(actual).toEqual(expected)
+  })
+
+  it('should accept props as second argument', () => {
+    const actual = createElement('div', {})
+    const expected = document.createElement('div')
+
+    expect(actual).toEqual(expected)
+  })
+})
+
 describe('createElement arguments validation errors', () => {
   it('should throw an error with a friendly message when the first argument has an unexpected type', () => {
     const expected = expect(() => {
@@ -195,18 +232,6 @@ describe('createElement arguments validation errors', () => {
     expected.toThrow(/`createElement`/)
     expected.toThrow(/unexpected type/)
     expected.toThrow(/string is expected/)
-  })
-
-  it('should throw an error with a friendly message when the second argument has an unexpected type', () => {
-    const expected = expect(() => {
-      createElement('div', '')
-    })
-
-    expected.toThrow(TypeError)
-    expected.toThrow(/2nd/)
-    expected.toThrow(/`createElement`/)
-    expected.toThrow(/unexpected type/)
-    expected.toThrow(/object is expected/)
   })
 
   it('should throw an error with a friendly message when the third argument has an unexpected type', () => {
