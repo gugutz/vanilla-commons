@@ -33,6 +33,14 @@ describe('addClass main functionality', () => {
     addClass(['table-hover', 'table-inverse'])(element)
     expect(element.className).toBe('table table-hover table-inverse')
   })
+
+  it('should not add a class multiple time', () => {
+    const element = document.createElement('div')
+    element.className = 'hey'
+    addClass('there', element)
+    addClass('there', element)
+    expect(element.className).toBe('hey there')
+  })
 })
 
 describe('addClass arguments validation errors', () => {
