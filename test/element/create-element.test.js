@@ -123,6 +123,21 @@ describe('createElement main functionality', () => {
     expect(handleClick.mock.calls.length).toBe(1)
   })
 
+  it('should support external event listeners', () => {
+    const handleClick1 = jest.fn()
+    const handleClick2 = jest.fn()
+
+    const clickEvent = new Event('click')
+
+    const actual = createElement('div', {onclick: handleClick1})
+    actual.addEventListener('click', handleClick2)
+
+    actual.dispatchEvent(clickEvent)
+
+    expect(handleClick1.mock.calls.length).toBe(1)
+    expect(handleClick2.mock.calls.length).toBe(1)
+  })
+
   it('should work with attributes props', () => {
     const actual = createElement('input', {
       type: 'text'
