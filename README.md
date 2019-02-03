@@ -1,10 +1,10 @@
 <h1 align="center">
-  <img src="https://cdn.rawgit.com/thiamsantos/vanilla-commons/42d60b80/logo.svg" width="200" alt="vanilla-commons">
+  <img src="https://cdn.rawgit.com/gugutz/vanilla-commons/42d60b80/logo.svg" width="200" alt="vanilla-commons">
 </h1>
 
 <p align="center">Lightweight common vanilla utilities for the modern web development</p>
 
-<p align="center"><a href="https://www.npmjs.com/package/vanilla-commons"><img src="https://img.shields.io/npm/v/vanilla-commons.svg" alt="npm"></a> <a href="https://travis-ci.org/thiamsantos/vanilla-commons"><img src="https://img.shields.io/travis/thiamsantos/vanilla-commons.svg" alt="Travis"></a> <a href="https://coveralls.io/github/thiamsantos/vanilla-commons?branch=master"><img src="https://img.shields.io/coveralls/thiamsantos/vanilla-commons.svg" alt="Coveralls"></a> <a href="https://david-dm.org/thiamsantos/vanilla-commons"><img src="https://img.shields.io/david/thiamsantos/vanilla-commons.svg" alt="David"></a> <a href="https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js"><img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js?compression=gzip" alt="gzip size"></a></p>
+<p align="center"><a href="https://www.npmjs.com/package/vanilla-commons"><img src="https://img.shields.io/npm/v/vanilla-commons.svg" alt="npm"></a> <a href="https://travis-ci.org/gugutz/vanilla-commons"><img src="https://img.shields.io/travis/gugutz/vanilla-commons.svg" alt="Travis"></a> <a href="https://coveralls.io/github/gugutz/vanilla-commons?branch=master"><img src="https://img.shields.io/coveralls/gugutz/vanilla-commons.svg" alt="Coveralls"></a> <a href="https://david-dm.org/gugutz/vanilla-commons"><img src="https://img.shields.io/david/gugutz/vanilla-commons.svg" alt="David"></a> <a href="https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js"><img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js?compression=gzip" alt="gzip size"></a></p>
 
 ## Table of Contents
 
@@ -492,7 +492,7 @@ Remove all the event listeners of a element and its children.
 **Examples**
 
 ```javascript
-// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/clear-events.test.js
+// See the tests for better examples https://github.com/gugutz/vanilla-commons/blob/master/test/element/clear-events.test.js
 import {clearEvents} from 'vanilla-commons'
 
 const element = document.querySelector('.element')
@@ -516,7 +516,7 @@ Create a DOM element.
 **Examples**
 
 ```javascript
-// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/create-element.test.js
+// See the tests for better examples https://github.com/gugutz/vanilla-commons/blob/master/test/element/create-element.test.js
 import {createElement} from 'vanilla-commons'
 
 createElement()
@@ -572,7 +572,7 @@ Get all the parents of a given element.
 **Examples**
 
 ```javascript
-// See the tests for better examples https://github.com/thiamsantos/vanilla-commons/blob/master/test/element/get-parents.test.js
+// See the tests for better examples https://github.com/gugutz/vanilla-commons/blob/master/test/element/get-parents.test.js
 import {getParents} from 'vanilla-commons'
 
 const element = document.querySelector('.element')
@@ -1080,7 +1080,7 @@ See the [contributing file](CONTRIBUTING.md).
 
 ## License
 
-[MIT License](LICENSE.md) © [Thiago Santos](https://thiamsantos.github.io/)
+[MIT License](LICENSE.md) © [Gustavo P Borges](https://github.com/gugutz)
 
 [Array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 [Boolean]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean

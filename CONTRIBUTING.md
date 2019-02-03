@@ -9,8 +9,8 @@ Use your best judgment, and feel free to propose changes to this document in a p
 This project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
 
 ## Reporting Issues
-Found a problem? Want a new feature? First of all see if your issue or idea has [already been reported](https://github.com/thiamsantos/vanilla-commons/issues).
-If don't, just open a [new clear and descriptive issue](https://github.com/thiamsantos/vanilla-commons/issues/new).
+Found a problem? Want a new feature? First of all see if your issue or idea has [already been reported](https://github.com/gugutz/vanilla-commons/issues).
+If don't, just open a [new clear and descriptive issue](https://github.com/gugutz/vanilla-commons/issues/new).
 
 ## Submitting pull requests
 Pull requests are the greatest contributions, so be sure they are focused in scope, and do avoid unrelated commits.
