@@ -1,6 +1,6 @@
 {
   "name": "vanilla-commons",
-  "version": "1.4.0",
+  "version": "1.4.0-development",
   "description": "Lightweight common vanilla utilities for the modern web development",
   "main": "dist/vanilla-commons.js",
   "module": "dist/vanilla-commons.es.js",
@@ -19,11 +19,12 @@
     "coveralls": "npm run coverage && cat coverage/lcov.info | coveralls",
     "build": "node build.js",
     "precommit": "lint-staged && npm test && npm run build",
-    "prepublish": "npm run precommit"
+    "prepublish": "npm run precommit",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thiamsantos/vanilla-commons.git"
+    "url": "https://github.com/gugutz/vanilla-commons.git"
   },
   "keywords": [
     "util",
@@ -44,7 +45,7 @@
   "author": "Thiago Santos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thiamsantos/vanilla-commons/issues"
+    "url": "https://github.com/gugutz/vanilla-commons/issues"
   },
   "babel": {
     "presets": [
@@ -69,7 +70,8 @@
     "rollup-plugin-filesize": "^1.4.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "xo": "^0.18.2"
+    "xo": "^0.18.2",
+    "semantic-release": "^15.13.3"
   },
   "xo": {
     "envs": [
