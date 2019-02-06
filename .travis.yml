@@ -1,12 +1,17 @@
 language: node_js
 node_js:
   - '8'
-script:
-  - npm test
-  - npm run build
-after_script:
-  - npm run coveralls
 
-after_success:
-  - npm install -g travis-deploy-once
-  - travis-deploy-once "npm run semantic-release"
+jobs:
+  include:
+    - stage: Build and test
+      name: Test
+      script: npm test
+    - script: npm run build
+      name: Build
+    - stage: Coveralls
+      script: npm run coveralls
+    - stage: deploy
+      if: branch = master
+      name: Release to npm
+      script: npm run semantic-release
