@@ -9,9 +9,9 @@ jobs:
       script: npm test
     - script: npm run build
       name: Build
-    - stage: Coveralls
-      script: npm run coveralls
     - stage: deploy
       if: branch = master
       name: Release to npm
       script: npm run semantic-release
+    - script: npm run coveralls
+      name: Coveralls
