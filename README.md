@@ -1,10 +1,10 @@
 <h1 align="center">
-  <img src="https://cdn.rawgit.com/gugutz/vanilla-commons/42d60b80/logo.svg" width="200" alt="vanilla-commons">
+  <img src="https://cdn.jsdelivr.net/gh/gugutz/vanilla-commons@42d60b80ef7fef593c13055b4704f345ebacd46c/logo.svg" width="200" alt="vanilla-commons">
 </h1>
 
 <p align="center">Lightweight common vanilla utilities for the modern web development</p>
 
-<p align="center"><a href="https://www.npmjs.com/package/vanilla-commons"><img src="https://img.shields.io/npm/v/vanilla-commons.svg" alt="npm"></a> <a href="https://travis-ci.org/gugutz/vanilla-commons"><img src="https://img.shields.io/travis/gugutz/vanilla-commons.svg" alt="Travis"></a> <a href="https://coveralls.io/github/gugutz/vanilla-commons?branch=master"><img src="https://img.shields.io/coveralls/gugutz/vanilla-commons.svg" alt="Coveralls"></a> <a href="https://david-dm.org/gugutz/vanilla-commons"><img src="https://img.shields.io/david/gugutz/vanilla-commons.svg" alt="David"></a> <a href="https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js"><img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js?compression=gzip" alt="gzip size"></a></p>
+<p align="center"><a href="https://www.npmjs.com/package/vanilla-commons"><img src="https://img.shields.io/npm/v/vanilla-commons.svg" alt="npm"></a> <a href="https://travis-ci.com/gugutz/vanilla-commons"><img src="https://img.shields.io/travis/gugutz/vanilla-commons.svg" alt="Travis"></a> <a href="https://coveralls.io/github/gugutz/vanilla-commons?branch=master"><img src="https://img.shields.io/coveralls/gugutz/vanilla-commons.svg" alt="Coveralls"></a> <a href="https://david-dm.org/gugutz/vanilla-commons"><img src="https://img.shields.io/david/gugutz/vanilla-commons.svg" alt="David"></a> <a href="https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js"><img src="http://img.badgesize.io/https://cdn.jsdelivr.net/npm/vanilla-commons/dist/vanilla-commons.umd.min.js?compression=gzip" alt="gzip size"></a></p>
 
 ## Table of Contents
 
